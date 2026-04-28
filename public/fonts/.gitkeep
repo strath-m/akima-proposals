@@ -1,0 +1,8 @@
+# Drop Uncut Sans .woff2 files here:
+#   UncutSans-Regular.woff2  (400)
+#   UncutSans-Medium.woff2   (500)
+#   UncutSans-Bold.woff2     (700)
+#   UncutSans-Black.woff2    (800 or 900)
+#
+# Then in app/layout.tsx, comment out the Inter import block and uncomment
+# the localFont block. See README for details.

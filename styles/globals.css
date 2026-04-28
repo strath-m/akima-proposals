@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #111111;
+  --color-white: #FFFFFF;
+
+  /* Akima Orange Scale — Base: #EA512F */
+  --color-akima-orange-50: #FFF4F1;
+  --color-akima-orange-100: #FFE4DD;
+  --color-akima-orange-200: #FFC7BA;
+  --color-akima-orange-300: #FFA08A;
+  --color-akima-orange-400: #F87457;
+  --color-akima-orange-500: #EA512F;
+  --color-akima-orange-600: #D63F1F;
+  --color-akima-orange-700: #B43217;
+  --color-akima-orange-800: #8F2814;
+  --color-akima-orange-900: #742313;
+  --color-akima-orange-950: #43120A;
+
+  /* Bone Neutral Scale — warm UI neutrals */
+  --color-bone-50: #FAF8F5;
+  --color-bone-100: #F4F0EA;
+  --color-bone-200: #EEE8E1;
+  --color-bone-300: #DDD8D0;
+  --color-bone-400: #C6BFB5;
+  --color-bone-500: #AFA79D;
+  --color-bone-600: #8D857C;
+  --color-bone-700: #6B645D;
+  --color-bone-800: #4A443F;
+  --color-bone-900: #2B2724;
+  --color-bone-950: #161412;
+
+  /* Semantic aliases used by the proposal UI */
+  --color-paper: var(--color-bone-50);
+  --color-bone: var(--color-bone-300);
+  --color-bone-soft: var(--color-bone-100);
+  --color-ember: var(--color-akima-orange-500);
+
+  --color-text-secondary: rgba(17, 17, 17, 0.62);
+  --color-text-muted: rgba(17, 17, 17, 0.42);
+  --color-text-faint: rgba(17, 17, 17, 0.24);
+
+  --color-rule: color-mix(in srgb, var(--color-bone-300) 70%, transparent);
+  --color-rule-soft: color-mix(in srgb, var(--color-bone-200) 72%, transparent);
+  --color-rule-strong: var(--color-bone-400);
+
+  --font-sans: var(--font-uncut-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius-pill: 9999px;
+  --radius-card: 12px;
+  --radius-sm: 4px;
+
+  --spacing-section-y: 7rem;
+  --spacing-section-y-lg: 9rem;
+}
+
+:root {
+  --measure: 42rem;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" 1, "ss07" 1, "kern" 1;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-white);
+}
+
+/* Editorial body prose for markdown sections */
+.prose-editorial {
+  max-width: var(--measure);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+
+.prose-editorial > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose-editorial p {
+  color: var(--color-ink);
+  max-width: var(--measure);
+}
+
+.prose-editorial ul,
+.prose-editorial ol {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prose-editorial ul li {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  column-gap: 0.875rem;
+  list-style: none;
+  padding-left: 0;
+  align-items: baseline;
+}
+
+.prose-editorial ul li::before {
+  content: "";
+  display: block;
+  width: 0.75rem;
+  height: 1px;
+  transform: translateY(-0.22em);
+  background: var(--color-ink);
+}
+
+.prose-editorial ol {
+  counter-reset: list;
+  padding-left: 0;
+}
+
+.prose-editorial ol li {
+  list-style: none;
+  counter-increment: list;
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.prose-editorial ol li::before {
+  content: counter(list, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-editorial a {
+  color: var(--color-ember);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose-editorial strong {
+  font-weight: 600;
+}
+
+.prose-editorial em {
+  font-style: italic;
+}
+
+/* Subdued variant — exclusions, etc. */
+.prose-subdued {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.prose-subdued ul li::before {
+  background: var(--color-text-muted);
+}
+
+/* Compact variant — terms, etc. */
+.prose-compact {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.prose-compact > * + * {
+  margin-top: 0.6rem;
+}
+
+/* Anchor scroll offset for sticky nav */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
