@@ -163,18 +163,18 @@ body {
 
 /* Subdued variant — exclusions, etc. */
 .prose-subdued {
-  color: var(--color-text-secondary);
-  font-size: 0.9375rem;
+  color: var(--color-ink);
+  font-size: 1rem;
   line-height: 1.7;
 }
 
 .prose-subdued ul li::before {
-  background: var(--color-text-muted);
+  background: var(--color-ink);
 }
 
 /* Compact variant — terms, etc. */
 .prose-compact {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.65;
 }
 

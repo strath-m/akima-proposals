@@ -10,7 +10,7 @@ function formatPrice(price: string) {
 export function PackageComparison({ packages }: { packages: Package[] }) {
   return (
     <SectionReveal>
-      <section id="compare" className="py-20 md:py-28">
+      <section id="compare" className="py-16 md:py-24">
         <div className="mb-12 flex flex-col gap-4 md:mb-16 md:max-w-2xl">
           <EyebrowPill>Compare</EyebrowPill>
           <h2 className="text-3xl font-bold leading-none tracking-[-0.02em] text-ink md:text-5xl">
@@ -39,21 +39,17 @@ function ComparisonCard({ pkg }: { pkg: Package }) {
   return (
     <a
       href={`#${pkg.id}`}
-      className={`group relative flex flex-col rounded-card overflow-hidden transition-colors duration-200 ${
-        recommended
-          ? "bg-bone-50 border border-rule md:-translate-y-2 md:shadow-[0_1px_0_var(--color-rule-soft)]"
-          : "bg-bone-100 border border-rule-soft hover:border-rule"
-      }`}
+      className="group relative flex flex-col overflow-hidden rounded-card border border-rule bg-bone-100 transition-colors duration-200 hover:border-rule-strong"
     >
       <div className="flex flex-1 flex-col gap-6 p-7 md:p-8">
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex min-h-10 flex-wrap items-start gap-2">
           <EyebrowPill>{pkg.eyebrow}</EyebrowPill>
           {recommended ? (
             <EyebrowPill variant="emberSoft">Recommended</EyebrowPill>
           ) : null}
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 md:min-h-[8.25rem]">
           <h3 className="text-2xl font-bold leading-tight tracking-[-0.01em] text-ink">
             {pkg.name}
           </h3>
