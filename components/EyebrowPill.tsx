@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 type Variant = "bone" | "ember" | "emberSoft";
 
 const variants: Record<Variant, string> = {
-  bone: "bg-bone-100 text-ink",
+  bone: "bg-bone-200 text-ink",
   ember: "bg-akima-orange-500 text-white",
   emberSoft: "bg-akima-orange-100 text-akima-orange-700",
 };

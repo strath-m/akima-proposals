@@ -17,6 +17,7 @@ export function Section({
   heading,
   body,
   variant = "default",
+  divider = true,
   children,
 }: {
   id?: string;
@@ -24,11 +25,15 @@ export function Section({
   heading: string;
   body?: string;
   variant?: Variant;
+  divider?: boolean;
   children?: ReactNode;
 }) {
   return (
     <SectionReveal>
-      <section id={id} className="border-t border-rule py-20 md:py-28">
+      <section
+        id={id}
+        className={`${divider ? "border-t border-rule" : ""} py-20 md:py-28`}
+      >
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             {eyebrow ? (

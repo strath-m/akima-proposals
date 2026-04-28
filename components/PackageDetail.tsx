@@ -13,7 +13,7 @@ export function PackageDetail({ pkg }: { pkg: Package }) {
     <SectionReveal>
       <section
         id={pkg.id}
-        className="relative overflow-hidden rounded-card border border-rule bg-bone-50"
+        className="relative overflow-hidden rounded-card border border-rule bg-bone-100"
       >
         <div className="px-6 py-12 md:px-12 md:py-16">
           {/* Header: eyebrow, name, summary */}
@@ -45,7 +45,7 @@ export function PackageDetail({ pkg }: { pkg: Package }) {
           <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
             {pkg.categories.map((category) => (
               <div key={category.title} className="flex flex-col gap-5">
-                <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
+                <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
                   {category.title}
                 </h4>
                 <ul className="flex flex-col gap-3">

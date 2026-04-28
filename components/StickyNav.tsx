@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "./Wordmark";
 
 type NavLink = { label: string; href: string };
@@ -10,10 +10,20 @@ export function StickyNav({
 }: {
   links: NavLink[];
 }) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 360);
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingUp = currentScrollY < lastScrollY.current;
+      const nearTop = currentScrollY < 24;
+
+      setVisible(nearTop || scrollingUp);
+      lastScrollY.current = currentScrollY;
+    };
+
+    lastScrollY.current = window.scrollY;
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

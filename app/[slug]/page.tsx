@@ -96,6 +96,7 @@ export default async function ProposalPage({
               eyebrow="01 — Overview"
               heading={overview.heading}
               body={overview.body}
+              divider={false}
             />
           ) : null}
 
@@ -109,7 +110,7 @@ export default async function ProposalPage({
           ) : null}
 
           {/* Detailed package sections */}
-          <div id="options" className="flex flex-col gap-6 border-t border-rule py-20 md:gap-10 md:py-28">
+          <div id="options" className="flex flex-col gap-6 border-t border-rule py-20 md:py-28">
             <div className="mb-2 flex flex-col gap-4 md:max-w-2xl">
               <div className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                 Scope &amp; deliverables

@@ -13,7 +13,7 @@ const fontSans = localFont({
 
 export const metadata: Metadata = {
   title: "Akima Studio",
-  description: "Bespoke proposals, prepared on request.",
+  description: "Unforgettable digital experiences & brands.",
   robots: { index: false, follow: false },
 };
 
