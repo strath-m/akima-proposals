@@ -1,19 +1,19 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
-  findSection,
   getProposalBySlug,
   getProposalSlugs,
+  findSection,
 } from "@/lib/proposals";
 import { Container } from "@/components/Container";
-import { Footer } from "@/components/Footer";
-import { MetadataRow } from "@/components/MetadataRow";
-import { NextStepsTimeline } from "@/components/NextStepsTimeline";
-import { PackageComparison } from "@/components/PackageComparison";
-import { PackageDetail } from "@/components/PackageDetail";
-import { ProposalHero } from "@/components/ProposalHero";
-import { Section } from "@/components/Section";
 import { StickyNav } from "@/components/StickyNav";
+import { ProposalHero } from "@/components/ProposalHero";
+import { MetadataRow } from "@/components/MetadataRow";
+import { Section } from "@/components/Section";
+import { PackageDetail } from "@/components/PackageDetail";
+import { PackageComparison } from "@/components/PackageComparison";
+import { CTASection } from "@/components/CTASection";
+import { Footer } from "@/components/Footer";
 
 export async function generateStaticParams() {
   return getProposalSlugs().map((slug) => ({ slug }));
@@ -29,12 +29,12 @@ export async function generateMetadata({
   if (!proposal) return { title: "Akima Studio" };
   const { client } = proposal.frontmatter;
   return {
-    title: `${client} — Timeline Concept · Akima Studio`,
+    title: `${client} — Classic Proposal · Akima Studio`,
     robots: { index: false, follow: false },
   };
 }
 
-export default async function ProposalTimelinePage({
+export default async function ClassicProposalPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -43,7 +43,7 @@ export default async function ProposalTimelinePage({
   const proposal = getProposalBySlug(slug);
   if (!proposal) notFound();
 
-  const { frontmatter } = proposal;
+  const { frontmatter, sections: _sections } = proposal;
   const {
     client,
     proposalTitle,
@@ -52,7 +52,9 @@ export default async function ProposalTimelinePage({
     date,
     validUntil,
     packages,
+    recommendedOption,
     contact,
+    cta,
   } = frontmatter;
 
   const overview = findSection(proposal, "overview");
@@ -60,8 +62,11 @@ export default async function ProposalTimelinePage({
   const addons = findSection(proposal, "optional-add-ons");
   const exclusions = findSection(proposal, "exclusions");
   const terms = findSection(proposal, "payment-and-terms");
+  const next = findSection(proposal, "next-steps");
   const faqs = findSection(proposal, "faqs");
   const notes = findSection(proposal, "notes");
+
+  const recommendedPkg = packages.find((p) => p.id === recommendedOption);
 
   const navLinks = [
     overview ? { label: "Overview", href: "#overview" } : null,
@@ -104,9 +109,10 @@ export default async function ProposalTimelinePage({
             />
           ) : null}
 
+          {/* Detailed package sections */}
           <div
             id="options"
-            className="flex flex-col gap-6 border-t border-rule py-16 md:py-24"
+            className="flex flex-col gap-6 border-t border-rule py-20 md:py-28"
           >
             <div className="mb-2 flex flex-col gap-4 md:max-w-2xl">
               <div className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
@@ -153,6 +159,15 @@ export default async function ProposalTimelinePage({
             />
           ) : null}
 
+          {next ? (
+            <Section
+              id="next-steps"
+              eyebrow="Next"
+              heading={next.heading}
+              body={next.body}
+            />
+          ) : null}
+
           {faqs ? (
             <Section
               id="faqs"
@@ -172,12 +187,12 @@ export default async function ProposalTimelinePage({
             />
           ) : null}
 
-          <div className="pt-6 md:pt-8">
-            <NextStepsTimeline
-              slug={slug}
+          <div className="pt-8 md:pt-12">
+            <CTASection
               client={client}
-              proposalTitle={proposalTitle}
               contact={contact}
+              cta={cta}
+              recommendedName={recommendedPkg?.name}
             />
           </div>
 
