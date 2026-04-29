@@ -8,6 +8,7 @@ function formatPrice(price: string) {
 
 export function PackageDetail({ pkg }: { pkg: Package }) {
   const recommended = !!pkg.recommended;
+  const categories = pkg.categories ?? [];
 
   return (
     <SectionReveal>
@@ -41,30 +42,31 @@ export function PackageDetail({ pkg }: { pkg: Package }) {
             <PriceCell label="Best for" value={pkg.bestFor} />
           </div>
 
-          {/* Categories grid */}
-          <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
-            {pkg.categories.map((category) => (
-              <div key={category.title} className="flex flex-col gap-5">
-                <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
-                  {category.title}
-                </h4>
-                <ul className="flex flex-col gap-3">
-                  {category.items.map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
-                    >
-                      <span
-                        aria-hidden
-                        className="block h-px w-3 translate-y-[-0.22em] bg-ink"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {categories.length > 0 ? (
+            <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+              {categories.map((category) => (
+                <div key={category.title} className="flex flex-col gap-5">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
+                    {category.title}
+                  </h4>
+                  <ul className="flex flex-col gap-3">
+                    {category.items.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
+                      >
+                        <span
+                          aria-hidden
+                          className="block h-px w-3 translate-y-[-0.22em] bg-ink"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
     </SectionReveal>

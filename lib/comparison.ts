@@ -8,7 +8,7 @@ export function getComparisonHighlights(pkg: Package): string[] {
   }
 
   const highlights: string[] = [];
-  for (const category of pkg.categories) {
+  for (const category of pkg.categories ?? []) {
     if (category.items.length > 0) {
       highlights.push(category.items[0]);
     }
