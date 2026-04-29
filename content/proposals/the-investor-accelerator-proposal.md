@@ -46,7 +46,7 @@ packages:
         items:
           - Full WordPress build and implementation
           - Launch-ready delivery
-          - Basic handover
+          - Handover call
   - id: option-2
     name: Multi-Variant Conversion System
     eyebrow: Option 02
@@ -123,7 +123,7 @@ packages:
 
 # Overview
 
-The Investor Accelerator already has strong attention coming through YouTube, Instagram, reports, and educational content. The opportunity is improving how that traffic converts.
+The Investor Accelerator already has strong attention coming through YouTube, X, reports, and educational content. The opportunity is improving how that traffic converts.
 
 Right now, people are being directed to the free report and 18-Year Cycle mini-course, but the offer and next step are not always clear. This creates friction, lowers opt-in rates, and weakens the path into TIA Pro memberships.
 
@@ -133,7 +133,7 @@ The goal of this project is to create clearer, higher-converting landing pages t
 
 - Increase sign-ups for the free report and 18-Year Cycle mini-course
 - Improve clarity around the offer and what users receive
-- Create dedicated landing pages for traffic from YouTube, Instagram, and other channels
+- Create dedicated landing pages for traffic from YouTube, X, and other channels
 - Build multiple landing page variations for A/B testing
 - Strengthen the pathway from free users into TIA Pro memberships
 
