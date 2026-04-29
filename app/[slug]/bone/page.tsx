@@ -29,12 +29,12 @@ export async function generateMetadata({
   if (!proposal) return { title: "Akima Studio" };
   const { client } = proposal.frontmatter;
   return {
-    title: `${client} — Proposal · Akima Studio`,
+    title: `${client} — Bone Theme · Akima Studio`,
     robots: { index: false, follow: false },
   };
 }
 
-export default async function ProposalPage({
+export default async function BoneProposalPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -71,7 +71,7 @@ export default async function ProposalPage({
   ].filter(Boolean) as { label: string; href: string }[];
 
   return (
-    <div className="theme-white min-h-screen bg-paper text-ink">
+    <>
       <StickyNav links={navLinks} />
 
       <main>
@@ -184,6 +184,6 @@ export default async function ProposalPage({
           <Footer />
         </Container>
       </main>
-    </div>
+    </>
   );
 }

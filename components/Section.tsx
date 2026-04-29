@@ -28,6 +28,9 @@ export function Section({
   divider?: boolean;
   children?: ReactNode;
 }) {
+  const bodyClassName =
+    id === "goals" ? `${proseClass[variant]} prose-goals` : proseClass[variant];
+
   return (
     <SectionReveal>
       <section
@@ -47,7 +50,7 @@ export function Section({
           </div>
           <div className="md:col-span-7 md:col-start-5">
             {body ? (
-              <div className={proseClass[variant]}>
+              <div className={bodyClassName}>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
               </div>
             ) : null}

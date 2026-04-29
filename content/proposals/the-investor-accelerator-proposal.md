@@ -145,7 +145,7 @@ A stronger front-end funnel means more of the right people entering the TIA ecos
 
 # Optional add-ons
 
-- Additional landing pages: AUD $2,500+
+- Additional landing pages
 - Additional funnel testing rounds: scoped separately
 - Email nurture sequence design: scoped separately
 - Ongoing CRO optimisation support: monthly retainer available
