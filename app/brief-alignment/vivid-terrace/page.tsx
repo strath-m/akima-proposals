@@ -67,12 +67,15 @@ const inspirationBlocks = [
       detail1: "/brief-alignment/vivid-terrace/inspiration-1-detail-1.png",
       detail2: "/brief-alignment/vivid-terrace/inspiration-1-detail-2.png",
     },
+    likes: [
+      "Emotional product storytelling",
+      "Sculptural product presentation",
+      "Premium lifestyle positioning",
+    ],
     takeaways: [
-      "Feels like luxury object, not BBQ equipment.",
-      "They make the grill feel like art.",
-      "Strong lifestyle + sculptural product positioning.",
-      "Minimal UI + big imagery.",
-      "Premium tone without over-explaining.",
+      "Sell the lifestyle, not just the product",
+      "Use imagery to create aspiration",
+      "Present products as design pieces, not equipment",
     ],
   },
   {
@@ -86,12 +89,15 @@ const inspirationBlocks = [
       detail1: "/brief-alignment/vivid-terrace/inspiration-2-detail-1.png",
       detail2: "/brief-alignment/vivid-terrace/inspiration-2-detail-2.png",
     },
+    likes: [
+      "Editorial luxury presentation",
+      "Sophisticated material storytelling",
+      "Calm, immersive scrolling experience",
+    ],
     takeaways: [
-      "A nice mixture of catalogues, articles, and products.",
-      "Ultra high-end positioning.",
-      "Almost anti-ecommerce in a good way.",
-      "Feels like architecture portfolio.",
-      "Restraint + typography + tone.",
+      "Blend architecture + lifestyle seamlessly",
+      "Let imagery and whitespace lead",
+      "Create a premium digital showroom feel",
     ],
   },
   {
@@ -105,12 +111,15 @@ const inspirationBlocks = [
       detail1: "/brief-alignment/vivid-terrace/inspiration-3-detail-1.png",
       detail2: "/brief-alignment/vivid-terrace/inspiration-3-detail-2.png",
     },
+    likes: [
+      "Story-led product experience",
+      "Lifestyle + detail balance",
+      "Editorial, premium feel",
+    ],
     takeaways: [
-      "Story-led product pages.",
-      "Lifestyle + specs balance.",
-      "Editorial, not ecom feel.",
-      "Progressive detail reveal.",
-      "Builds aspiration + trust.",
+      "Product pages should educate and inspire",
+      "Progressive detail builds confidence",
+      "Strong visual storytelling justifies premium pricing",
     ],
   },
   {
@@ -124,12 +133,15 @@ const inspirationBlocks = [
       detail1: "/brief-alignment/vivid-terrace/inspiration-4-detail-1.png",
       detail2: "/brief-alignment/vivid-terrace/inspiration-4-detail-2.png",
     },
+    likes: [
+      "Modular product storytelling",
+      "Clear consultation pathways",
+      "Lifestyle-first positioning",
+    ],
     takeaways: [
-      "Modular product storytelling.",
-      "Lifestyle-first product positioning.",
-      "Strong showroom consultation flow.",
-      "Blends inspiration + configuration.",
-      "Makes premium products feel approachable.",
+      "Make complex systems feel approachable",
+      "Blend inspiration with configuration",
+      "Strong showroom-style UX direction",
     ],
   },
 ];
@@ -439,8 +451,12 @@ function WebsiteInspiration() {
                 </div>
               </div>
 
-              <div className="mt-8 max-w-2xl">
-                <TextColumn title="What we like" items={inspiration.takeaways} />
+              <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
+                <TextColumn title="What we like" items={inspiration.likes} />
+                <TextColumn
+                  title="Key takeaways for Vivid Terrace"
+                  items={inspiration.takeaways}
+                />
               </div>
             </article>
           ))}
