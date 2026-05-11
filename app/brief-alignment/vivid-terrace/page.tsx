@@ -3,6 +3,7 @@ import {
   BookOpen,
   Compass,
   GalleryVerticalEnd,
+  Link2,
   Palette,
   Route,
   ShieldCheck,
@@ -55,10 +56,82 @@ const principleBlocks = [
 ];
 
 const inspirationBlocks = [
-  "Inspiration 1: Website Name",
-  "Inspiration 2: Website Name",
-  "Inspiration 3: Website Name",
-  "Inspiration 4: Website Name",
+  {
+    eyebrow: "Reference 1",
+    title: "OFYR",
+    link: "https://www.ofyr.com/",
+    description:
+      "OFYR is a premium outdoor cooking and lifestyle brand built around the idea of bringing people together through fire, food, and shared outdoor moments.",
+    images: {
+      main: "/brief-alignment/vivid-terrace/inspiration-1-main.png",
+      detail1: "/brief-alignment/vivid-terrace/inspiration-1-detail-1.png",
+      detail2: "/brief-alignment/vivid-terrace/inspiration-1-detail-2.png",
+    },
+    takeaways: [
+      "Feels like luxury object, not BBQ equipment.",
+      "They make the grill feel like art.",
+      "Strong lifestyle + sculptural product positioning.",
+      "Minimal UI + big imagery.",
+      "Premium tone without over-explaining.",
+    ],
+  },
+  {
+    eyebrow: "Reference 2",
+    title: "EXTETA",
+    link: "https://www.exteta.it/en",
+    description:
+      "Exteta is a luxury Italian outdoor furniture company focused on refined outdoor living, craftsmanship, and architectural design.",
+    images: {
+      main: "/brief-alignment/vivid-terrace/inspiration-2-main.png",
+      detail1: "/brief-alignment/vivid-terrace/inspiration-2-detail-1.png",
+      detail2: "/brief-alignment/vivid-terrace/inspiration-2-detail-2.png",
+    },
+    takeaways: [
+      "A nice mixture of catalogues, articles, and products.",
+      "Ultra high-end positioning.",
+      "Almost anti-ecommerce in a good way.",
+      "Feels like architecture portfolio.",
+      "Restraint + typography + tone.",
+    ],
+  },
+  {
+    eyebrow: "Reference 3",
+    title: "Polestar",
+    link: "https://www.polestar.com/au/polestar-2/",
+    description:
+      "Polestar is a premium electric performance car brand with a strong Scandinavian design sensibility: minimal, technical, restrained, and performance-led.",
+    images: {
+      main: "/brief-alignment/vivid-terrace/inspiration-3-main.png",
+      detail1: "/brief-alignment/vivid-terrace/inspiration-3-detail-1.png",
+      detail2: "/brief-alignment/vivid-terrace/inspiration-3-detail-2.png",
+    },
+    takeaways: [
+      "Story-led product pages.",
+      "Lifestyle + specs balance.",
+      "Editorial, not ecom feel.",
+      "Progressive detail reveal.",
+      "Builds aspiration + trust.",
+    ],
+  },
+  {
+    eyebrow: "Reference 4",
+    title: "Roostr",
+    link: "https://www.roostr.co.uk/",
+    description:
+      "Roostr is a Dutch outdoor kitchen company creating modular, premium outdoor kitchens designed for year-round cooking, entertaining, and relaxed outdoor living.",
+    images: {
+      main: "/brief-alignment/vivid-terrace/inspiration-4-main.png",
+      detail1: "/brief-alignment/vivid-terrace/inspiration-4-detail-1.png",
+      detail2: "/brief-alignment/vivid-terrace/inspiration-4-detail-2.png",
+    },
+    takeaways: [
+      "Modular product storytelling.",
+      "Lifestyle-first product positioning.",
+      "Strong showroom consultation flow.",
+      "Blends inspiration + configuration.",
+      "Makes premium products feel approachable.",
+    ],
+  },
 ];
 
 const helpColumns = [
@@ -98,11 +171,29 @@ const helpColumns = [
 ];
 
 const nextSteps = [
-  "Confirm alignment",
-  "Clarify launch requirements",
-  "Prepare formal proposal",
-  "Lock scope and timeline",
-  "Begin strategy and design",
+  {
+    title: "Confirm alignment",
+    detail: "Ensure strategic direction, goals, and scope are aligned.",
+  },
+  {
+    title: "Clarify launch requirements",
+    detail:
+      "Finalise product scope, integrations, functionality, and content readiness.",
+  },
+  {
+    title: "Prepare formal proposal",
+    detail:
+      "Provide recommended approach, timeline, deliverables, and investment.",
+  },
+  {
+    title: "Lock scope and timeline",
+    detail: "Approve project scope and establish delivery phases.",
+  },
+  {
+    title: "Begin strategy and design",
+    detail:
+      "Commence UX strategy, sitemap, wireframes, and visual direction.",
+  },
 ];
 
 export default function BriefAlignmentPage() {
@@ -117,7 +208,7 @@ export default function BriefAlignmentPage() {
     <div className="brief-alignment-page theme-white min-h-screen bg-paper text-ink">
       <style>{`
         .brief-alignment-page .prose-editorial li {
-          font-weight: 500;
+          font-weight: 600;
         }
       `}</style>
       <StickyNav links={navLinks} />
@@ -204,8 +295,19 @@ For this category, trust and aspiration need to work together. The site should b
           <HowWeCouldHelp />
 
           <Section
+            id="why-akima-studio"
+            eyebrow="07 — Why us?"
+            heading="Why Akima Studio"
+            body={`We approach projects like this from both a strategic and experiential perspective, balancing premium brand positioning with commercial clarity.
+
+Our focus is not simply designing a visually impressive website, but creating a digital experience that helps customers confidently move from inspiration to enquiry or purchase.
+
+Because Vivid Terrace sits within a high-consideration category, we believe trust, storytelling, usability, and restraint all need to work together cohesively.`}
+          />
+
+          <Section
             id="key-decisions"
-            eyebrow="07 — Decisions"
+            eyebrow="08 — Decisions"
             heading="Key Decisions Before Proposal"
             body={`Before preparing a formal proposal, we would want to confirm a few key decisions that will materially affect scope, timeline, and investment.
 
@@ -289,37 +391,56 @@ function WebsiteInspiration() {
         </div>
 
         <div className="flex flex-col gap-14 md:gap-20">
-          {inspirationBlocks.map((title) => (
-            <article key={title} className="pt-10">
+          {inspirationBlocks.map((inspiration) => (
+            <article key={inspiration.title} className="pt-10">
               <div className="mb-7 max-w-2xl">
-                <h3 className="text-2xl font-bold leading-tight tracking-[-0.02em] text-ink">
-                  {title}
+                <div className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
+                  {inspiration.eyebrow}
+                </div>
+                <h3 className="text-[32px] font-bold leading-tight text-ink">
+                  {inspiration.title}
                 </h3>
+                {inspiration.link ? (
+                  <a
+                    href={inspiration.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ember underline decoration-ember/35 underline-offset-4 transition-colors hover:text-akima-orange-700 hover:decoration-akima-orange-700"
+                  >
+                    <Link2 aria-hidden className="h-4 w-4" strokeWidth={1.8} />
+                    {inspiration.link.replace(/^https?:\/\//, "")}
+                  </a>
+                ) : null}
                 <p className="mt-3 text-base leading-7 text-text-secondary">
-                  Reference notes to be added.
+                  {inspiration.description}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 gap-4 md:gap-5">
-                <ImagePlaceholder className="aspect-[16/9]" label="Large image" />
+                <InspirationImage
+                  alt={`${inspiration.title} main reference`}
+                  className="h-[620px]"
+                  label="Large image"
+                  src={inspiration.images?.main}
+                />
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-                  <ImagePlaceholder
-                    className="aspect-[16/10]"
+                  <InspirationImage
+                    alt={`${inspiration.title} detail reference 1`}
+                    className="h-[300px]"
                     label="Detail image"
+                    src={inspiration.images?.detail1}
                   />
-                  <ImagePlaceholder
-                    className="aspect-[16/10]"
+                  <InspirationImage
+                    alt={`${inspiration.title} detail reference 2`}
+                    className="h-[300px]"
                     label="Detail image"
+                    src={inspiration.images?.detail2}
                   />
                 </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                <TextColumn title="What we like" />
-                <TextColumn
-                  title="Key takeaways for Vivid Terrace"
-                  items={["To be added.", "To be added.", "To be added."]}
-                />
+              <div className="mt-8 max-w-2xl">
+                <TextColumn title="What we like" items={inspiration.takeaways} />
               </div>
             </article>
           ))}
@@ -353,7 +474,7 @@ function HowWeCouldHelp() {
               className="rounded-card border border-rule bg-bone-100 p-8 shadow-[0_18px_70px_rgba(17,17,17,0.05)] md:p-10"
             >
               <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-bone-200 text-ink">
-                <column.Icon aria-hidden className="h-8 w-8" strokeWidth={1.6} />
+                <column.Icon aria-hidden className="h-6 w-6" strokeWidth={1.6} />
               </div>
               <h3 className="text-2xl font-bold leading-tight tracking-[-0.02em] text-ink">
                 {column.title}
@@ -414,8 +535,8 @@ function BriefNextSteps() {
           </div>
 
           <ol className="grid grid-cols-1 gap-8 md:grid-cols-5 md:gap-0">
-            {nextSteps.map((title, index) => (
-              <li key={title} className="relative md:pr-6">
+            {nextSteps.map((step, index) => (
+              <li key={step.title} className="relative md:pr-6">
                 <div className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-4 md:block">
                   <div className="relative flex justify-center md:mb-7 md:block">
                     <span
@@ -438,10 +559,10 @@ function BriefNextSteps() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <h3 className="text-lg font-semibold leading-tight tracking-[-0.01em] text-paper">
-                      {title}
+                      {step.title}
                     </h3>
                     <p className="text-sm leading-6 text-paper/58">
-                      Placeholder step detail.
+                      {step.detail}
                     </p>
                   </div>
                 </div>
@@ -454,23 +575,46 @@ function BriefNextSteps() {
   );
 }
 
-function ImagePlaceholder({
+function InspirationImage({
+  alt,
   className,
   label,
+  src,
 }: {
+  alt: string;
   className: string;
   label: string;
+  src?: string;
 }) {
   return (
     <div
-      className={`flex w-full items-center justify-center bg-[#d4d4d8] text-xs font-semibold uppercase tracking-[0.14em] text-text-muted ${className}`}
+      className={`overflow-hidden border border-bone-200 bg-[#d4d4d8] ${className}`}
     >
-      {label}
+      {src ? (
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
+          {label}
+        </div>
+      )}
     </div>
   );
 }
 
-function TextColumn({ title, items }: { title: string; items?: string[] }) {
+function TextColumn({
+  body,
+  title,
+  items,
+}: {
+  body?: string;
+  title: string;
+  items?: string[];
+}) {
   return (
     <div>
       <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
@@ -493,7 +637,7 @@ function TextColumn({ title, items }: { title: string; items?: string[] }) {
         </ul>
       ) : (
         <p className="mt-4 text-base leading-7 text-text-secondary">
-          Placeholder content to be added.
+          {body ?? "Placeholder content to be added."}
         </p>
       )}
     </div>
