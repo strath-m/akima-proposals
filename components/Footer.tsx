@@ -10,6 +10,12 @@ export function Footer({ year = new Date().getFullYear() }: { year?: number }) {
             Crafting unforgettable digital experiences that feel as good as they
             perform.
           </p>
+          <a
+            href="https://akima.studio"
+            className="text-sm text-ink transition-colors hover:text-ember"
+          >
+            akima.studio
+          </a>
         </div>
 
         <div className="flex flex-col gap-1 text-sm text-text-muted md:items-end">

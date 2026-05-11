@@ -270,7 +270,7 @@ A well-designed site can do more than sell products. It can help customers imagi
 
 For this category, trust and aspiration need to work together. The site should be beautiful enough to create desire, but clear enough to help a serious buyer make a high-value decision.
 
-- Turn the site into a premium showroom, not a generic catalogue.
+- Create a premium digital showroom, not a generic catalogue.
 - Use brand and product storytelling to justify the price point.
 - Make high-ticket product research feel clear and enjoyable.
 - Create strong direct-purchase and quote/consultation pathways.
@@ -395,10 +395,14 @@ function WebsiteInspiration() {
             Website Inspiration
           </h2>
           <p className="text-base leading-7 text-text-secondary md:text-lg">
-            We would not recommend copying any one reference directly. The right
-            direction for Vivid Terrace likely sits between luxury outdoor
-            living, premium furniture, architectural editorial, and
-            high-consideration e-commerce.
+            These references have been selected to help frame the kind of
+            digital experience Vivid Terrace could create as a premium outdoor
+            living brand.
+          </p>
+          <p className="text-base leading-7 text-text-secondary md:text-lg">
+            The aim is to identify patterns that feel relevant: strong lifestyle
+            imagery, considered layouts, clear product storytelling, and a
+            customer journey that supports both inspiration and decision-making.
           </p>
         </div>
 
