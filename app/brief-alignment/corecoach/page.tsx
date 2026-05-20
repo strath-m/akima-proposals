@@ -7,7 +7,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { StickyNav } from "@/components/StickyNav";
 
 export const metadata: Metadata = {
-  title: "CoreCoach Recommended Approach · Akima Studio",
+  title: "CoreCoach Product Redesign · Akima Studio",
   robots: { index: false, follow: false },
 };
 
@@ -354,12 +354,12 @@ function Hero() {
         <EyebrowPill>Recommended Project Approach</EyebrowPill>
         <div className="flex flex-col gap-6">
           <h1 className="text-5xl font-extrabold leading-none tracking-[-0.03em] text-ink md:text-8xl">
-            CoreCoach Recommended Approach
+            CoreCoach Product Redesign
           </h1>
           <p className="max-w-3xl text-lg font-medium leading-8 text-text-secondary md:text-xl md:leading-9">
-            A phased approach to improving CoreCoach&apos;s product clarity,
-            usability, design system, and overall experience across mobile and
-            web.
+            A phased approach to creating a clearer, faster, more premium
+            product experience across mobile, web, coach, and client journeys
+            for the CoreCoach app.
           </p>
         </div>
       </div>
