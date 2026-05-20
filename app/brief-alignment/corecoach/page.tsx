@@ -97,7 +97,7 @@ const phases = [
       },
     ],
     timeline: "2-3 weeks",
-    investment: "AUD$9,000 fixed fee",
+    investment: "AUD$9,000",
     note: "Kick-off available from 24 June 2026 onwards.",
   },
   {
@@ -286,7 +286,7 @@ From the brief, the key priorities appear to be:`}
           >
             <BalancedList items={priorities} />
             <p className="mt-7 max-w-2xl text-base font-medium leading-7 text-text-secondary">
-              The broader goal is to make CoreCoach feel clearer, faster, more
+              The goal is to make CoreCoach feel clearer, faster, more
               polished, and more valuable to both coaches and their clients.
             </p>
           </Section>
@@ -445,11 +445,11 @@ function PhaseDetail({ phase }: { phase: (typeof phases)[number] }) {
             <h4 className="text-xl font-bold leading-tight text-ink">
               Includes
             </h4>
-            <ul className="mt-7 grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2">
+            <ul className="mt-7 columns-1 gap-x-10 md:columns-2">
               {includedItems.map((item) => (
                 <li
                   key={item}
-                  className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
+                  className="mb-3 grid break-inside-avoid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
                 >
                   <span
                     aria-hidden
@@ -505,15 +505,9 @@ function ScopeClarity() {
               Scope Clarity
             </h2>
           </div>
-          <div className="md:col-span-7 md:col-start-5">
-            <p className="max-w-2xl text-base leading-7 text-text-secondary md:text-lg">
-              These assumptions and exclusions keep the pre-proposal direction
-              clear before the full redesign scope is confirmed.
-            </p>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
+        <div className="grid grid-cols-1 gap-10 md:-mt-24 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-7 md:col-start-5">
             <ScopeTextBlock
               title="Key Assumptions"
