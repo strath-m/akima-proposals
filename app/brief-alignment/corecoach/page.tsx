@@ -404,6 +404,7 @@ function RecommendedApproach() {
           {phases.map((phase) => (
             <PhaseDetail key={phase.id} phase={phase} />
           ))}
+          <OngoingSupport />
         </div>
       </section>
     </SectionReveal>
@@ -486,6 +487,80 @@ function PhaseDetail({ phase }: { phase: (typeof phases)[number] }) {
               {phase.note}
             </p>
           ) : null}
+        </div>
+      </section>
+    </SectionReveal>
+  );
+}
+
+function OngoingSupport() {
+  const options = [
+    {
+      label: "Option 1",
+      title: "Product Design Support",
+      priceBold: "$4,000–$6,000 AUD/month",
+      priceMeta: "(Approx. 4–6 design days/month)",
+      description:
+        "Best suited to light ongoing improvements, design system updates, small feature work, and dev handoff support.",
+    },
+    {
+      label: "Option 2",
+      title: "Product Design Partner",
+      priceBold: "$8,000–$12,000 AUD/month",
+      priceMeta: "(Approx. 8–12 design days/month)",
+      description:
+        "Best suited to ongoing UX/UI design across new features, priority flows, product improvements, and regular collaboration with the CoreCoach team.",
+    },
+  ];
+
+  return (
+    <SectionReveal>
+      <section
+        id="ongoing-support"
+        className="relative overflow-hidden rounded-card border border-rule bg-bone-100"
+      >
+        <div className="px-6 py-12 md:px-12 md:py-16">
+          <div className="flex flex-col gap-5 md:max-w-3xl">
+            <EyebrowPill>Optional</EyebrowPill>
+
+            <h3 className="text-3xl font-bold leading-tight tracking-[-0.02em] text-ink md:text-5xl">
+              Ongoing Product Design Support
+            </h3>
+
+            <p className="text-base leading-7 text-text-secondary md:text-lg">
+              For ongoing feature work, product iteration, design system
+              expansion, and developer handoff, CoreCoach can continue with
+              Akima on a monthly design support model.
+            </p>
+          </div>
+
+          <div className="mt-12 flex flex-col">
+            {options.map((option, index) => (
+              <div
+                key={option.label}
+                className={`flex flex-col gap-3 border-b border-rule py-10 md:py-12${
+                  index === 0 ? " border-t" : ""
+                }`}
+              >
+                <EyebrowPill>{option.label}</EyebrowPill>
+                <h4 className="text-xl font-bold leading-tight text-ink">
+                  {option.title}
+                </h4>
+                <p className="text-base leading-6 text-ink">
+                  <span className="font-bold">{option.priceBold}</span>{" "}
+                  {option.priceMeta}
+                </p>
+                <p className="max-w-5xl text-base leading-7 text-text-secondary">
+                  {option.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-sm font-medium leading-6 text-text-secondary">
+            Final structure would be confirmed once the product roadmap,
+            delivery cadence, and ongoing design needs are clearer.
+          </p>
         </div>
       </section>
     </SectionReveal>
