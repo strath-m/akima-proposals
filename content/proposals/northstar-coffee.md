@@ -1,6 +1,3 @@
-
----
-
 client: "Northstar Coffee Co."  
 slug: "northstar-coffee"  
 proposalTitle: "Website Clarity Sprint"  
