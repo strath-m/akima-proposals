@@ -1,4 +1,5 @@
 ---
+
 client: Harbour Stone Advisory
 slug: harbour-stone-advisory
 proposalTitle: Website Strategy and Conversion Sprint
