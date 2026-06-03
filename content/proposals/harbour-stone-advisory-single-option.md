@@ -6,7 +6,7 @@ preparedFor: Harbour Stone Advisory
 preparedBy: Akima Studio
 date: 12 May 2026
 validUntil: 12 June 2026
-recommendedOption: option-1
+recommendedOption:
 contact:
   name: Strath
   role: Co-founder, Akima Studio
