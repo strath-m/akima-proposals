@@ -1,5 +1,5 @@
 ---
-client: Coastal Coffee Co
+client: Coastal Coffee Co TEST
 slug: test-proposal
 proposalTitle: Website Redesign & Conversion Optimisation
 preparedFor: Coastal Coffee Co
