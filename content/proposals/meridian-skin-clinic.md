@@ -175,19 +175,6 @@ This project is designed to improve clarity, strengthen credibility, and create 
 - Proposal valid until 12 June 2026
 - Additional work outside of scope billed at AUD $150/hour or re-scoped as required
 
-# FAQs
-
-## Can we start with one page first?
-
-Yes. Option 01 is designed for a focused booking page improvement if you want to start with the highest-impact conversion point first.
-
-## Can the project be staged?
-
-Yes. The work can be staged so the core conversion improvements are delivered first, with additional treatment pages or campaign landing pages added later.
-
-# Notes
-
-This is a fake test proposal created to validate the Akima proposal renderer structure.
 
 # Next steps
 
