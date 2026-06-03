@@ -1,7 +1,7 @@
 ---
 client: Atlas Studio Supply
 slug: atlas-studio-supply
-proposalTitle: Ecommerce Clarity & Product Page Conversion Sprint
+proposalTitle: Atlas Clarity & Product Page Conversion Sprint
 preparedFor: Atlas Studio Supply
 preparedBy: Akima Studio
 date: 12 May 2026
@@ -20,7 +20,7 @@ packages:
     name: Product Page Refresh
     eyebrow: Option 01
     summary: A focused improvement to the core product page experience, designed to increase clarity, trust, and add-to-cart confidence from existing traffic.
-    price: AUD $6,500
+    price: AUD $90,500
     timeline: ~2 weeks
     bestFor: Improving the most important purchase page quickly without changing the wider ecommerce experience.
     recommended: false
@@ -49,7 +49,7 @@ packages:
           - Implementation notes for key sections
           - Basic handover call
   - id: option-2
-    name: Ecommerce Conversion Sprint
+    name: Ecommerce Conversion Package
     eyebrow: Option 02
     summary: A stronger conversion-focused ecommerce sprint designed to improve clarity, trust, and purchase flow across the homepage, product page, and cart journey.
     price: AUD $12,500
