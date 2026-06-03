@@ -51,11 +51,14 @@ export default async function ClassicProposalPage({
     preparedBy,
     date,
     validUntil,
-    packages,
     recommendedOption,
     contact,
     cta,
   } = frontmatter;
+  const packages = Array.isArray(frontmatter.packages)
+    ? frontmatter.packages
+    : [];
+  const hasMultiplePackages = packages.length > 1;
 
   const overview = findSection(proposal, "overview");
   const goals = findSection(proposal, "goals");
@@ -71,7 +74,7 @@ export default async function ClassicProposalPage({
   const navLinks = [
     overview ? { label: "Overview", href: "#overview" } : null,
     { label: "Options", href: `#${packages[0]?.id ?? "options"}` },
-    { label: "Compare", href: "#compare" },
+    hasMultiplePackages ? { label: "Compare", href: "#compare" } : null,
     terms ? { label: "Terms", href: "#payment-and-terms" } : null,
   ].filter(Boolean) as { label: string; href: string }[];
 
@@ -119,7 +122,7 @@ export default async function ClassicProposalPage({
                 Scope &amp; deliverables
               </div>
               <h2 className="text-3xl font-bold leading-none tracking-[-0.02em] text-ink md:text-5xl">
-                Package options
+                {hasMultiplePackages ? "Package options" : "Proposed scope"}
               </h2>
             </div>
             {packages.map((pkg) => (
@@ -127,7 +130,9 @@ export default async function ClassicProposalPage({
             ))}
           </div>
 
-          <PackageComparison packages={packages} />
+          {hasMultiplePackages ? (
+            <PackageComparison packages={packages} />
+          ) : null}
 
           {addons ? (
             <Section

@@ -14,7 +14,7 @@ export type CtaConfig = {
 
 export type Category = {
   title: string;
-  items: string[];
+  items?: string[];
 };
 
 export type Package = {
@@ -27,7 +27,7 @@ export type Package = {
   bestFor: string;
   recommended?: boolean;
   comparisonHighlights?: string[];
-  categories: Category[];
+  categories?: Category[];
 };
 
 export type ProposalFrontmatter = {

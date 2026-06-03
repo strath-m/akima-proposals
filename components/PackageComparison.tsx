@@ -8,6 +8,13 @@ function formatPrice(price: string) {
 }
 
 export function PackageComparison({ packages }: { packages: Package[] }) {
+  if (packages.length <= 1) return null;
+
+  const gridClass =
+    packages.length === 2
+      ? "grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 md:items-stretch"
+      : "grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 md:items-stretch";
+
   return (
     <SectionReveal>
       <section id="compare" className="py-16 md:py-24">
@@ -22,7 +29,7 @@ export function PackageComparison({ packages }: { packages: Package[] }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 md:items-stretch">
+        <div className={gridClass}>
           {packages.map((pkg) => (
             <ComparisonCard key={pkg.id} pkg={pkg} />
           ))}

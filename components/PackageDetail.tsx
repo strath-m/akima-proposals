@@ -8,7 +8,9 @@ function formatPrice(price: string) {
 
 export function PackageDetail({ pkg }: { pkg: Package }) {
   const recommended = !!pkg.recommended;
-  const categories = pkg.categories ?? [];
+  const categories = (pkg.categories ?? []).filter(
+    (category) => (category.items ?? []).length > 0
+  );
 
   return (
     <SectionReveal>
@@ -50,7 +52,7 @@ export function PackageDetail({ pkg }: { pkg: Package }) {
                     {category.title}
                   </h4>
                   <ul className="flex flex-col gap-3">
-                    {category.items.map((item, idx) => (
+                    {(category.items ?? []).map((item, idx) => (
                       <li
                         key={idx}
                         className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
