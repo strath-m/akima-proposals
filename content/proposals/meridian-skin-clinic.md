@@ -17,7 +17,7 @@ cta:
   requestEditsLabel: Request Edits
 packages:
   - id: option-1
-    name: Booking Page Refresh
+    name: Booking Page Reboot
     eyebrow: Option 01
     summary: A focused improvement to the primary booking page and enquiry pathway, designed to reduce friction and improve appointment conversion from existing traffic.
     price: AUD $5,500
