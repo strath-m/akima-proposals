@@ -126,7 +126,11 @@ export default async function ClassicProposalPage({
               </h2>
             </div>
             {packages.map((pkg) => (
-              <PackageDetail key={pkg.id} pkg={pkg} />
+              <PackageDetail
+                key={pkg.id}
+                pkg={pkg}
+                showRecommended={hasMultiplePackages}
+              />
             ))}
           </div>
 

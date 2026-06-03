@@ -52,7 +52,7 @@ function ComparisonCard({ pkg }: { pkg: Package }) {
         <div className="flex min-h-10 flex-wrap items-start gap-2">
           <EyebrowPill>{pkg.eyebrow}</EyebrowPill>
           {recommended ? (
-            <EyebrowPill variant="emberSoft">Recommended</EyebrowPill>
+            <EyebrowPill variant="emeraldSoft">Recommended</EyebrowPill>
           ) : null}
         </div>
 

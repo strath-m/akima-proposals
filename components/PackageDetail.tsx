@@ -6,8 +6,14 @@ function formatPrice(price: string) {
   return price.replace(/^AUD\s+/i, "");
 }
 
-export function PackageDetail({ pkg }: { pkg: Package }) {
-  const recommended = !!pkg.recommended;
+export function PackageDetail({
+  pkg,
+  showRecommended = true,
+}: {
+  pkg: Package;
+  showRecommended?: boolean;
+}) {
+  const recommended = showRecommended && !!pkg.recommended;
   const categories = (pkg.categories ?? []).filter(
     (category) => (category.items ?? []).length > 0
   );
@@ -24,7 +30,7 @@ export function PackageDetail({ pkg }: { pkg: Package }) {
             <div className="flex flex-wrap items-center gap-3">
               <EyebrowPill>{pkg.eyebrow}</EyebrowPill>
               {recommended ? (
-                <EyebrowPill variant="emberSoft">Recommended</EyebrowPill>
+                <EyebrowPill variant="emeraldSoft">Recommended</EyebrowPill>
               ) : null}
             </div>
 

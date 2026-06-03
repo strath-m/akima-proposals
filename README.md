@@ -16,16 +16,93 @@ content/proposals/acme-corp.md                  →  proposals.akima.studio/acme
 ## Adding a new proposal
 
 1. Duplicate `content/proposals/a-trip-to-transformation.md` and rename it (the new filename becomes the URL slug if you don't override it).
-2. Edit the frontmatter and body to match the new client.
+2. Edit the YAML frontmatter and body markdown to match the new client.
 3. `git add`, commit, push. Vercel rebuilds and the new URL is live.
 
 ## Markdown schema
 
-Frontmatter is YAML. Body is plain markdown. Each `# Heading` in the body maps to a known section slot — unknown headings are silently dropped.
+Each proposal file has two parts:
+
+1. YAML frontmatter between `---` delimiters.
+2. Body markdown after the closing `---`.
+
+The file must start on line 1 with `---`. Do not add a blank line before it.
+The top block is YAML, not normal Markdown. YAML indentation matters.
+
+Correct:
+
+```yaml
+---
+client: Example Client
+slug: example-client
+proposalTitle: Website Strategy Sprint
+preparedFor: Example Client
+preparedBy: Akima Studio
+date: 12 May 2026
+validUntil: 12 June 2026
+recommendedOption: option-2
+contact:
+  name: Strath
+  role: Co-founder, Akima Studio
+  email: strath@akima.studio
+  phone: 0432 279 718
+cta:
+  acceptLabel: Accept Proposal
+  requestEditsLabel: Request Edits
+packages:
+  - id: option-1
+    name: Foundation Website Refresh
+    eyebrow: Option 01
+    summary: A focused refresh of the core website experience.
+    price: AUD $7,500
+    timeline: ~2-3 weeks
+    bestFor: Improving the existing website quickly.
+    recommended: false
+    comparisonHighlights:
+      - Homepage structure refinement
+      - Core visual polish
+      - Mobile-first design improvements
+      - Clearer CTA hierarchy
+      - Implementation-ready handover
+    categories:
+      - title: Strategy
+        items:
+          - Review of the current website structure and user journey
+          - CTA hierarchy and conversion pathway recommendations
+      - title: Delivery
+        items:
+          - Dev-ready Figma file
+          - Basic handover call
+---
+```
+
+Wrong:
+
+```yaml
+
+---
+contact:
+name: Strath
+email: [strath@akima.studio](mailto:strath@akima.studio)
+packages:
+* id: option-1
+  comparisonHighlights:
+  * Homepage structure refinement
+    categories:
+```
+
+Common mistakes that break rendering:
+
+- A blank line before the opening `---`.
+- Missing the opening `---`.
+- Using Markdown bullets (`*`) in frontmatter. Use YAML hyphens (`-`) instead.
+- Not indenting nested fields under `contact`, `cta`, `packages`, `comparisonHighlights`, `categories`, or `items`.
+- Putting Markdown links in frontmatter. Use plain values like `email: strath@akima.studio`.
+- Nesting `categories` under the last `comparisonHighlights` item. `categories` must be a sibling of `comparisonHighlights`.
 
 **Required frontmatter:**
 - `client`, `proposalTitle`, `preparedFor`, `preparedBy`, `date`
-- `packages` (array of options — see example file for shape)
+- `packages` (array of options; 1, 2, or 3 packages are supported)
 
 **Optional frontmatter:**
 - `slug` (defaults to filename)
@@ -34,10 +111,34 @@ Frontmatter is YAML. Body is plain markdown. Each `# Heading` in the body maps t
 - `cta` (overrides default labels and email subjects)
 - Per-package: `comparisonHighlights` (array — overrides auto-extraction)
 
-**Recognised body sections** (each renders only if present):
-`# Overview` · `# Goals` · `# Why this matters` · `# Optional add-ons` · `# Exclusions` · `# Payment & terms` · `# Next steps` · `# FAQs` · `# Notes`
+If a proposal has only one package, the renderer treats it as the proposed scope and does not show a `Recommended` pill, even if that package has `recommended: true`.
+
+**Body sections rendered by the main proposal route** (each renders only if present):
+`# Overview` · `# Goals` · `# Optional add-ons` · `# Exclusions` · `# Payment & terms` · `# FAQs` · `# Notes`
+
+The parser also recognises `# Why this matters` and `# Next steps`, but the current main white proposal route does not render those sections.
 
 Section heading match is case-insensitive and tolerates `&` / spacing variations.
+
+## ChatGPT prompt guardrail
+
+When asking ChatGPT to create a proposal file, include this instruction:
+
+```text
+Create one markdown proposal file for the Akima proposal renderer.
+
+The top metadata block must be valid YAML frontmatter. The file must start on line 1 with `---` and end the frontmatter with another `---`.
+
+Before the closing `---`, do not use Markdown syntax. Use YAML only.
+
+Rules:
+- Use two-space indentation for nested fields.
+- Use `-` for YAML array items, never `*`.
+- Use plain email strings, not Markdown links.
+- Keep `categories` as a sibling of `comparisonHighlights`.
+- Match the structure of `content/proposals/the-investor-accelerator-proposal.md`.
+- Output only the final `.md` file content. Do not wrap it in a code fence.
+```
 
 ## Local development
 

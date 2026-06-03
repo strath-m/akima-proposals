@@ -120,7 +120,11 @@ export default async function ProposalPage({
               </h2>
             </div>
             {packages.map((pkg) => (
-              <PackageDetail key={pkg.id} pkg={pkg} />
+              <PackageDetail
+                key={pkg.id}
+                pkg={pkg}
+                showRecommended={hasMultiplePackages}
+              />
             ))}
           </div>
 

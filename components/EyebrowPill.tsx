@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 
-type Variant = "bone" | "ember" | "emberSoft";
+type Variant = "bone" | "ember" | "emberSoft" | "emeraldSoft";
 
 const variants: Record<Variant, string> = {
   bone: "bg-bone-200 text-ink",
   ember: "bg-akima-orange-500 text-white",
   emberSoft: "bg-akima-orange-100 text-akima-orange-700",
+  emeraldSoft: "bg-emerald-100 text-emerald-700",
 };
 
 export function EyebrowPill({
