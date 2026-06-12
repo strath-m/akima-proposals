@@ -77,32 +77,6 @@ The way people discover products online is also changing. Customers are increasi
 
 This engagement is designed to identify opportunities across customer experience, product discovery, conversion optimisation, cross-sell pathways, and digital strategy. The outcome will be a prioritised roadmap of recommendations, supported by concept designs and implementation guidance, to help inform future investment decisions and website improvements.
 
-## Why start with discovery
-
-Because the opportunity spans ecommerce strategy, product discovery, mobile experience, checkout behaviour, bundling, upsells and future implementation planning, we would not recommend quoting a larger redesign or rebuild before properly reviewing the experience.
-
-Starting with a focused audit phase helps:
-
-- Confirm the highest-impact opportunities.
-- Identify the most important customer journeys.
-- Understand where friction exists across product discovery and checkout.
-- Clarify which improvements should be prioritised first.
-- Reduce investment and delivery risk.
-- Create a stronger foundation for future redesign work.
-- Give Quad Lock clearer investment ranges before committing to larger initiatives.
-
-This makes future investment decisions more predictable, better structured, and easier for both teams to manage.
-
-## Why Akima Studio
-
-Akima Studio is a senior-led design studio built by designers who have spent years working across UX, digital experience, ecommerce, and conversion-focused design.
-
-We bring that level of strategic thinking and design craft without the overhead, handover gaps, or generic processes that often come with larger agencies.
-
-For Quad Lock, this means the audit will not be treated as a surface-level UX review. We will approach it as a commercial growth opportunity: identifying ways to improve product discovery, increase conversion performance, strengthen cross-sell pathways, and create a clearer experience for customers navigating the Quad Lock ecosystem.
-
-Our strength is combining human-centred UX thinking with elevated design and commercial strategy, ensuring recommendations are both practical and impactful.
-
 # Goals
 
 - Improve product discovery and customer navigation pathways
@@ -111,6 +85,22 @@ Our strength is combining human-centred UX thinking with elevated design and com
 - Reduce friction across mobile and checkout experiences
 - Establish a prioritised roadmap for future website investment
 - Provide budget guidance for future optimisation and redesign initiatives
+
+# Why this matters
+
+Because the project spans ecommerce strategy, customer journeys, product discovery, conversion optimisation, and future implementation planning, we would not recommend scoping a larger redesign initiative before properly reviewing the experience.
+
+Starting with a dedicated audit phase helps:
+
+- Confirm the highest-impact opportunities.
+- Identify the most important customer journeys.
+- Understand where friction exists across product discovery and checkout.
+- Clarify which improvements should be prioritised first.
+- Reduce investment and delivery risk.
+- Create a stronger foundation for future redesign work.
+- Provide clearer budget guidance before committing to larger initiatives.
+
+This makes future investment decisions more predictable, better structured, and easier for both teams to manage.
 
 # Exclusions
 
@@ -145,3 +135,15 @@ We will provide indicative cost ranges for future initiatives. Detailed quotatio
 ## **Will this identify quick wins?**
 
 Yes. Recommendations will be prioritised by effort and impact, allowing the Quad Lock team to identify opportunities that can deliver value in both the short and long term.
+
+# Notes
+
+## Why Akima Studio
+
+Akima Studio is a senior-led design studio built by designers who have spent years working across UX, digital experience, ecommerce, and conversion-focused design.
+
+We bring that level of strategic thinking and design craft without the overhead, handover gaps, or generic processes that often come with larger agencies.
+
+For Quad Lock, this means the audit will not be treated as a surface-level UX review. We will approach it as a commercial growth opportunity: identifying ways to improve product discovery, increase conversion performance, strengthen cross-sell pathways, and create a clearer experience for customers navigating the Quad Lock ecosystem.
+
+Our strength is combining human-centred UX thinking with elevated design and commercial strategy, ensuring recommendations are both practical and impactful.
