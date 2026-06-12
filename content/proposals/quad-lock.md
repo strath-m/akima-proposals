@@ -86,13 +86,21 @@ This engagement is designed to identify opportunities across customer experience
 - Establish a prioritised roadmap for future website investment
 - Provide budget guidance for future optimisation and redesign initiatives
 
-# Optional add-ons
+# Why this matters
 
-- Future implementation and redesign proposals
-- Conversion rate optimisation programs
-- Ecommerce experience redesign
-- Personalisation and customer journey initiatives
-- Ongoing optimisation retainers
+Because the project spans ecommerce strategy, customer journeys, product discovery, conversion optimisation, and future implementation planning, we would not recommend scoping a larger redesign initiative before properly reviewing the experience.
+
+Starting with a dedicated audit phase helps:
+
+- Confirm the highest-impact opportunities.
+- Identify the most important customer journeys.
+- Understand where friction exists across product discovery and checkout.
+- Clarify which improvements should be prioritised first.
+- Reduce investment and delivery risk.
+- Create a stronger foundation for future redesign work.
+- Provide clearer budget guidance before committing to larger initiatives.
+
+This makes future investment decisions more predictable, better structured, and easier for both teams to manage.
 
 # Exclusions
 
@@ -112,24 +120,30 @@ This engagement is designed to identify opportunities across customer experience
 
 # FAQs
 
-## What happens after the audit?
+## **What happens after the audit?**
 
 The audit is designed to provide clarity on the highest-value opportunities across the digital experience. Following presentation of the findings, Akima Studio can provide detailed scopes and quotations for any recommended initiatives.
 
-## Will we receive design recommendations?
+## **Will we receive design recommendations?**
 
 Yes. Where appropriate, we will provide wireframes, concepts and visual examples to help demonstrate recommended improvements and future opportunities.
 
-## Will implementation costs be included?
+## **Will implementation costs be included?**
 
 We will provide indicative cost ranges for future initiatives. Detailed quotations can be prepared once priorities have been aligned.
 
-## Will this identify quick wins?
+## **Will this identify quick wins?**
 
 Yes. Recommendations will be prioritised by effort and impact, allowing the Quad Lock team to identify opportunities that can deliver value in both the short and long term.
 
 # Notes
 
-This proposal focuses on discovery, strategy and opportunity identification. The primary goal is to provide Quad Lock with the clarity required to make informed decisions about future investment in their digital experience.
+## Why Akima Studio
 
-The audit is intended to create a strategic foundation for future optimisation, redesign and growth initiatives, while providing a clear understanding of potential investment levels before committing to implementation.
+Akima Studio is a senior-led design studio built by designers who have spent years working across UX, digital experience, ecommerce, and conversion-focused design.
+
+We bring that level of strategic thinking and design craft without the overhead, handover gaps, or generic processes that often come with larger agencies.
+
+For Quad Lock, this means the audit will not be treated as a surface-level UX review. We will approach it as a commercial growth opportunity: identifying ways to improve product discovery, increase conversion performance, strengthen cross-sell pathways, and create a clearer experience for customers navigating the Quad Lock ecosystem.
+
+Our strength is combining human-centred UX thinking with elevated design and commercial strategy, ensuring recommendations are both practical and impactful.
