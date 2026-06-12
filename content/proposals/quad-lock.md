@@ -136,7 +136,7 @@ We will provide indicative cost ranges for future initiatives. Detailed quotatio
 
 Yes. Recommendations will be prioritised by effort and impact, allowing the Quad Lock team to identify opportunities that can deliver value in both the short and long term.
 
-# Notes
+# Why Akima Studio
 
 ## Why Akima Studio
 
