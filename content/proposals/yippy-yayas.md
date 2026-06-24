@@ -21,7 +21,7 @@ packages:
     eyebrow: Option 01
     summary: A dedicated landing page designed specifically for paid advertising campaigns, focused on turning campaign visitors into customers.
     price: AUD $1,000
-    timeline: 2 business days
+    timeline: 1 week
     bestFor: A fast, cost-effective conversion asset for immediate paid advertising activity.
     recommended: false
     comparisonHighlights:
