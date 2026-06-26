@@ -1,9 +1,17 @@
 import { Contact } from "@/lib/types";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { EyebrowPill } from "./EyebrowPill";
 import { ProposalResponseActions } from "./ProposalResponseActions";
 import { SectionReveal } from "./SectionReveal";
 
-const steps = [
+export type TimelineStep = {
+  label?: string;
+  title: string;
+  detail?: string;
+};
+
+const defaultSteps: TimelineStep[] = [
   {
     label: "01",
     title: "Select an option",
@@ -31,17 +39,82 @@ const steps = [
   },
 ];
 
+export function parseNextStepsMarkdown(body: string): {
+  steps: TimelineStep[];
+  trailingBody?: string;
+} {
+  const lines = body.split("\n");
+  const steps: TimelineStep[] = [];
+  let lastConsumedLine = -1;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const headingMatch = lines[index].match(/^##\s+(\d+)\.\s+(.+?)\s*$/);
+
+    if (headingMatch) {
+      const detailLines: string[] = [];
+      let detailIndex = index + 1;
+
+      while (
+        detailIndex < lines.length &&
+        !lines[detailIndex].match(/^##\s+\d+\.\s+.+?\s*$/)
+      ) {
+        detailLines.push(lines[detailIndex]);
+        detailIndex += 1;
+      }
+
+      steps.push({
+        label: headingMatch[1].padStart(2, "0"),
+        title: headingMatch[2],
+        detail: detailLines.join("\n").trim() || undefined,
+      });
+      lastConsumedLine = detailIndex - 1;
+      index = detailIndex - 1;
+      continue;
+    }
+
+    const listMatch = lines[index].match(/^\s*(\d+)\.\s+(.+?)\s*$/);
+
+    if (listMatch) {
+      steps.push({
+        label: listMatch[1].padStart(2, "0"),
+        title: listMatch[2],
+      });
+      lastConsumedLine = index;
+    }
+  }
+
+  return {
+    steps,
+    trailingBody: lines
+      .slice(lastConsumedLine + 1)
+      .join("\n")
+      .trim() || undefined,
+  };
+}
+
 export function NextStepsTimeline({
   slug,
   client,
   proposalTitle,
   contact,
+  eyebrow = "Next",
+  heading = "Next Steps",
+  body = "A clean path from preferred option to kickoff, with the decision points visible before we move into production.",
+  steps = defaultSteps,
+  trailingBody,
 }: {
-  slug: string;
-  client: string;
-  proposalTitle: string;
+  slug?: string;
+  client?: string;
+  proposalTitle?: string;
   contact?: Contact;
+  eyebrow?: string;
+  heading?: string;
+  body?: string;
+  steps?: TimelineStep[];
+  trailingBody?: string;
 }) {
+  const shouldShowActions = Boolean(slug && client && proposalTitle);
+
   return (
     <SectionReveal>
       <section
@@ -63,20 +136,19 @@ export function NextStepsTimeline({
               variant="ember"
               className="!bg-akima-orange-950 !text-akima-orange-500"
             >
-              Next
+              {eyebrow}
             </EyebrowPill>
             <h2 className="text-4xl font-extrabold leading-none tracking-[-0.02em] text-paper md:text-6xl">
-              Next Steps
+              {heading}
             </h2>
             <p className="max-w-2xl text-base leading-7 text-paper/68 md:text-lg">
-              A clean path from preferred option to kickoff, with the decision
-              points visible before we move into production.
+              {body}
             </p>
           </div>
 
           <ol className="grid grid-cols-1 gap-8 md:grid-cols-5 md:gap-0">
             {steps.map((step, index) => (
-              <li key={step.label} className="relative md:pr-6">
+              <li key={`${step.title}-${index}`} className="relative md:pr-6">
                 <div className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-4 md:block">
                   <div className="relative flex justify-center md:mb-7 md:block">
                     <span
@@ -90,31 +162,49 @@ export function NextStepsTimeline({
                       />
                     ) : null}
                     <span className="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border border-paper/35 bg-ink shadow-[0_0_0_8px_var(--color-ink)]">
-                      <span className="h-2.5 w-2.5 rounded-full bg-ember" />
+                      <span
+                        className={
+                          index === 0
+                            ? "next-step-active-dot h-2.5 w-2.5 rounded-full bg-emerald-400"
+                            : "h-2.5 w-2.5 rounded-full bg-ember"
+                        }
+                      />
                     </span>
                   </div>
 
                   <div className="flex flex-col gap-3 md:min-h-[10.5rem] md:pr-3">
                     <span className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-paper/42">
-                      {step.label}
+                      {step.label ?? String(index + 1).padStart(2, "0")}
                     </span>
                     <h3 className="text-lg font-semibold leading-tight tracking-[-0.01em] text-paper">
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-6 text-paper/58">
-                      {step.detail}
-                    </p>
+                    {step.detail ? (
+                      <p className="text-sm leading-6 text-paper/58">
+                        {step.detail}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </li>
             ))}
           </ol>
 
-          <ProposalResponseActions
-            slug={slug}
-            client={client}
-            proposalTitle={proposalTitle}
-          />
+          {trailingBody ? (
+            <div className="next-steps-trailing border-t border-paper/15 pt-6 text-sm leading-6 text-paper/70 md:max-w-3xl">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {trailingBody}
+              </ReactMarkdown>
+            </div>
+          ) : null}
+
+          {shouldShowActions ? (
+            <ProposalResponseActions
+              slug={slug as string}
+              client={client as string}
+              proposalTitle={proposalTitle as string}
+            />
+          ) : null}
 
           {contact ? (
             <div className="flex w-full flex-col gap-1 border-t border-paper/15 pt-6 text-sm leading-6 text-paper/70">

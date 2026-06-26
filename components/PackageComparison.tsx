@@ -4,7 +4,13 @@ import { EyebrowPill } from "./EyebrowPill";
 import { SectionReveal } from "./SectionReveal";
 
 function formatPrice(price: string) {
-  return price.replace(/^AUD\s+/i, "");
+  return price.replace(/^(AUD|USD)\s+/i, "");
+}
+
+function getPriceLabel(pkg: Package) {
+  if (pkg.priceLabel) return pkg.priceLabel;
+  if (/^USD\s+/i.test(pkg.price)) return "Investment (USD)";
+  return "Investment (AUD)";
 }
 
 export function PackageComparison({ packages }: { packages: Package[] }) {
@@ -60,14 +66,16 @@ function ComparisonCard({ pkg }: { pkg: Package }) {
           <h3 className="text-2xl font-bold leading-tight tracking-[-0.01em] text-ink">
             {pkg.name}
           </h3>
-          <p className="text-sm leading-6 text-text-secondary">
-            {pkg.bestFor}
-          </p>
+          {pkg.bestFor ? (
+            <p className="text-sm leading-6 text-text-secondary">
+              {pkg.bestFor}
+            </p>
+          ) : null}
         </div>
 
         <div className="flex flex-col gap-1">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
-            Investment (AUD)
+            {getPriceLabel(pkg)}
           </span>
           <span className="text-2xl font-bold tracking-[-0.02em] text-ink">
             {formatPrice(pkg.price)}

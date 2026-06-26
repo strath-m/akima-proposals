@@ -1,9 +1,15 @@
-import { Package } from "@/lib/types";
+import { CategoryItem, Package } from "@/lib/types";
 import { EyebrowPill } from "./EyebrowPill";
 import { SectionReveal } from "./SectionReveal";
 
 function formatPrice(price: string) {
-  return price.replace(/^AUD\s+/i, "");
+  return price.replace(/^(AUD|USD)\s+/i, "");
+}
+
+function getPriceLabel(pkg: Package) {
+  if (pkg.priceLabel) return pkg.priceLabel;
+  if (/^USD\s+/i.test(pkg.price)) return "Investment (USD)";
+  return "Investment (AUD)";
 }
 
 export function PackageDetail({
@@ -17,6 +23,9 @@ export function PackageDetail({
   const categories = (pkg.categories ?? []).filter(
     (category) => (category.items ?? []).length > 0
   );
+  const priceGridClass = pkg.bestFor
+    ? "md:grid-cols-3"
+    : "md:grid-cols-2";
 
   return (
     <SectionReveal>
@@ -44,10 +53,14 @@ export function PackageDetail({
           </div>
 
           {/* Price block */}
-          <div className="mt-10 grid grid-cols-1 gap-y-6 border-y border-rule py-8 md:grid-cols-3 md:gap-x-10 md:py-10">
-            <PriceCell label="Investment (AUD)" value={formatPrice(pkg.price)} emphasis />
+          <div
+            className={`mt-10 grid grid-cols-1 gap-y-6 border-y border-rule py-8 ${priceGridClass} md:gap-x-10 md:py-10`}
+          >
+            <PriceCell label={getPriceLabel(pkg)} value={formatPrice(pkg.price)} emphasis />
             <PriceCell label="Timeline" value={pkg.timeline} />
-            <PriceCell label="Best for" value={pkg.bestFor} />
+            {pkg.bestFor ? (
+              <PriceCell label="Best for" value={pkg.bestFor} />
+            ) : null}
           </div>
 
           {categories.length > 0 ? (
@@ -59,25 +72,66 @@ export function PackageDetail({
                   </h4>
                   <ul className="flex flex-col gap-3">
                     {(category.items ?? []).map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
-                      >
-                        <span
-                          aria-hidden
-                          className="block h-px w-3 translate-y-[-0.22em] bg-ink"
-                        />
-                        {item}
-                      </li>
+                      <CategoryListItem key={idx} item={item} />
                     ))}
                   </ul>
                 </div>
               ))}
             </div>
           ) : null}
+
+          {pkg.deliverables && pkg.deliverables.length > 0 ? (
+            <div className="mt-12 border-t border-rule pt-10">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
+                Deliverables
+              </h4>
+              <ul className="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2">
+                {pkg.deliverables.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink"
+                  >
+                    <span
+                      aria-hidden
+                      className="block h-px w-3 translate-y-[-0.22em] bg-ink"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </section>
     </SectionReveal>
+  );
+}
+
+function CategoryListItem({ item }: { item: CategoryItem }) {
+  if (typeof item === "string") {
+    return (
+      <li className="grid grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3.5 text-base leading-7 text-ink">
+        <span
+          aria-hidden
+          className="block h-px w-3 translate-y-[-0.22em] bg-ink"
+        />
+        {item}
+      </li>
+    );
+  }
+
+  return (
+    <li className="grid grid-cols-[1rem_minmax(0,1fr)] gap-x-3.5 text-base leading-7 text-ink">
+      <span aria-hidden className="mt-[0.85em] block h-px w-3 bg-ink" />
+      <span className="flex flex-col gap-1">
+        <span className="font-semibold leading-6 text-ink">{item.title}</span>
+        {item.description ? (
+          <span className="text-[0.95rem] leading-6 text-text-secondary">
+            {item.description}
+          </span>
+        ) : null}
+      </span>
+    </li>
   );
 }
 

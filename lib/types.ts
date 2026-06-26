@@ -12,9 +12,16 @@ export type CtaConfig = {
   requestEditsEmailSubject?: string;
 };
 
+export type CategoryItem =
+  | string
+  | {
+      title: string;
+      description?: string;
+    };
+
 export type Category = {
   title: string;
-  items?: string[];
+  items?: CategoryItem[];
 };
 
 export type Package = {
@@ -23,11 +30,13 @@ export type Package = {
   eyebrow: string;
   summary: string;
   price: string;
+  priceLabel?: string;
   timeline: string;
-  bestFor: string;
+  bestFor?: string;
   recommended?: boolean;
   comparisonHighlights?: string[];
   categories?: Category[];
+  deliverables?: string[];
 };
 
 export type ProposalFrontmatter = {
