@@ -216,6 +216,32 @@ body {
   margin-top: 0.6rem;
 }
 
+.next-step-active-dot {
+  animation: next-step-blink 1.8s ease-in-out infinite;
+  box-shadow:
+    0 0 0 2px rgba(52, 211, 153, 0.1),
+    0 0 10px rgba(52, 211, 153, 0.36);
+}
+
+@keyframes next-step-blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow:
+      0 0 0 2px rgba(52, 211, 153, 0.1),
+      0 0 10px rgba(52, 211, 153, 0.36);
+  }
+
+  50% {
+    opacity: 0.52;
+    transform: scale(0.92);
+    box-shadow:
+      0 0 0 5px rgba(52, 211, 153, 0.03),
+      0 0 16px rgba(52, 211, 153, 0.5);
+  }
+}
+
 /* Anchor scroll offset for sticky nav */
 [id] {
   scroll-margin-top: 6rem;
