@@ -1,7 +1,7 @@
 ---
 client: Crosspoint Financial
 slug: discovery/crosspoint-financial
-proposalTitle: Financial Modernization Discovery & Audit
+proposalTitle: Crosspoint Financial Discovery & Audit
 preparedFor: Crosspoint Financial
 preparedBy: Akima Studio
 date: 26 June 2026
