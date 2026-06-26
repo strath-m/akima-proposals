@@ -1,6 +1,10 @@
-import { Package } from "./types";
+import { CategoryItem, Package } from "./types";
 
 const MAX_HIGHLIGHTS = 5;
+
+function getItemLabel(item: CategoryItem): string {
+  return typeof item === "string" ? item : item.title;
+}
 
 export function getComparisonHighlights(pkg: Package): string[] {
   const comparisonHighlights = pkg.comparisonHighlights ?? [];
@@ -12,7 +16,7 @@ export function getComparisonHighlights(pkg: Package): string[] {
   for (const category of pkg.categories ?? []) {
     const items = category.items ?? [];
     if (items.length > 0) {
-      highlights.push(items[0]);
+      highlights.push(getItemLabel(items[0]));
     }
     if (highlights.length >= MAX_HIGHLIGHTS) break;
   }

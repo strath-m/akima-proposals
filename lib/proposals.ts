@@ -11,6 +11,31 @@ import {
 
 const PROPOSALS_DIR = path.join(process.cwd(), "content", "proposals");
 
+function getMarkdownFiles(dir: string): string[] {
+  if (!fs.existsSync(dir)) return [];
+
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      return getMarkdownFiles(fullPath);
+    }
+
+    return entry.isFile() && entry.name.endsWith(".md") ? [fullPath] : [];
+  });
+}
+
+function getSlugForFile(
+  filePath: string,
+  frontmatter: Partial<ProposalFrontmatter>
+) {
+  const relativePath = path
+    .relative(PROPOSALS_DIR, filePath)
+    .split(path.sep)
+    .join("/");
+  return frontmatter.slug ?? relativePath.replace(/\.md$/, "");
+}
+
 function slugify(input: string): SectionKey | null {
   const normalised = input
     .trim()
@@ -58,27 +83,34 @@ function splitBodyIntoSections(body: string): ProposalSection[] {
 }
 
 export function getProposalSlugs(): string[] {
-  if (!fs.existsSync(PROPOSALS_DIR)) return [];
-  return fs
-    .readdirSync(PROPOSALS_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => {
-      const raw = fs.readFileSync(path.join(PROPOSALS_DIR, f), "utf8");
+  return getMarkdownFiles(PROPOSALS_DIR)
+    .map((filePath) => {
+      const raw = fs.readFileSync(filePath, "utf8");
       const { data } = matter(raw);
-      const fm = data as Partial<ProposalFrontmatter>;
-      return fm.slug ?? f.replace(/\.md$/, "");
-    });
+      return getSlugForFile(filePath, data as Partial<ProposalFrontmatter>);
+    })
+    .filter((slug) => !slug.includes("/"));
+}
+
+export function getDiscoveryProposalSlugs(): string[] {
+  return getMarkdownFiles(PROPOSALS_DIR)
+    .map((filePath) => {
+      const raw = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(raw);
+      return getSlugForFile(filePath, data as Partial<ProposalFrontmatter>);
+    })
+    .filter((slug) => slug.startsWith("discovery/"))
+    .map((slug) => slug.replace(/^discovery\//, ""));
 }
 
 export function getProposalBySlug(slug: string): Proposal | null {
-  if (!fs.existsSync(PROPOSALS_DIR)) return null;
-  const files = fs.readdirSync(PROPOSALS_DIR).filter((f) => f.endsWith(".md"));
+  const files = getMarkdownFiles(PROPOSALS_DIR);
 
   for (const file of files) {
-    const raw = fs.readFileSync(path.join(PROPOSALS_DIR, file), "utf8");
+    const raw = fs.readFileSync(file, "utf8");
     const { data, content } = matter(raw);
     const frontmatter = data as ProposalFrontmatter;
-    const fileSlug = frontmatter.slug ?? file.replace(/\.md$/, "");
+    const fileSlug = getSlugForFile(file, frontmatter);
 
     if (fileSlug === slug) {
       return {
