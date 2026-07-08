@@ -66,6 +66,8 @@ export default async function DiscoveryProposalPage({
 
   const overview = findSection(proposal, "overview");
   const goals = findSection(proposal, "goals");
+  const addons = findSection(proposal, "optional-add-ons");
+  const exclusions = findSection(proposal, "exclusions");
   const terms = findSection(proposal, "payment-and-terms");
   const next = findSection(proposal, "next-steps");
   const parsedNext = next ? parseNextStepsMarkdown(next.body) : null;
@@ -73,6 +75,8 @@ export default async function DiscoveryProposalPage({
   const navLinks = [
     overview ? { label: "Overview", href: "#overview" } : null,
     { label: "Scope", href: `#${packages[0]?.id ?? "options"}` },
+    addons ? { label: "Add-ons", href: "#optional-add-ons" } : null,
+    exclusions ? { label: "Exclusions", href: "#exclusions" } : null,
     terms ? { label: "Terms", href: "#payment-and-terms" } : null,
     next ? { label: "Next", href: "#next-steps" } : null,
   ].filter(Boolean) as { label: string; href: string }[];
@@ -127,6 +131,26 @@ export default async function DiscoveryProposalPage({
               <PackageDetail key={pkg.id} pkg={pkg} showRecommended={false} />
             ))}
           </div>
+
+          {addons ? (
+            <Section
+              id="optional-add-ons"
+              eyebrow="Add-ons"
+              heading={addons.heading}
+              body={addons.body}
+              variant="compact"
+            />
+          ) : null}
+
+          {exclusions ? (
+            <Section
+              id="exclusions"
+              eyebrow="Scope clarity"
+              heading={exclusions.heading}
+              body={exclusions.body}
+              variant="subdued"
+            />
+          ) : null}
 
           {terms ? (
             <Section
