@@ -21,7 +21,9 @@ packages:
     eyebrow: Project Scope
 
     summary: A focused Shopify website refresh designed to improve ecommerce, support the Ballina cafe opening, and bring the Lambruk Pantry story to life online.
-    price: AUD $7,000
+    price: AUD $6,750
+    originalPrice: AUD $7,500
+    discountLabel: 10% off
     priceLabel: Investment (AUD)
     timeline: 3-4 weeks
     recommended: true

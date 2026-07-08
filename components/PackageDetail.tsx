@@ -56,7 +56,15 @@ export function PackageDetail({
           <div
             className={`mt-10 grid grid-cols-1 gap-y-6 border-y border-rule py-8 ${priceGridClass} md:gap-x-10 md:py-10`}
           >
-            <PriceCell label={getPriceLabel(pkg)} value={formatPrice(pkg.price)} emphasis />
+            <PriceCell
+              label={getPriceLabel(pkg)}
+              value={formatPrice(pkg.price)}
+              originalValue={
+                pkg.originalPrice ? formatPrice(pkg.originalPrice) : undefined
+              }
+              discountLabel={pkg.discountLabel}
+              emphasis
+            />
             <PriceCell label="Timeline" value={pkg.timeline} />
             {pkg.bestFor ? (
               <PriceCell label="Best for" value={pkg.bestFor} />
@@ -138,25 +146,49 @@ function CategoryListItem({ item }: { item: CategoryItem }) {
 function PriceCell({
   label,
   value,
+  originalValue,
+  discountLabel,
   emphasis = false,
 }: {
   label: string;
   value: string;
+  originalValue?: string;
+  discountLabel?: string;
   emphasis?: boolean;
 }) {
+  const valueClassName = emphasis
+    ? "text-3xl font-bold leading-none tracking-[-0.02em] text-ink md:text-4xl"
+    : "text-base font-medium leading-6 text-ink";
+
   return (
     <div className="flex flex-col gap-2">
       <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
         {label}
       </span>
-      <span
-        className={
-          emphasis
-            ? "text-3xl font-bold leading-none tracking-[-0.02em] text-ink md:text-4xl"
-            : "text-base font-medium leading-6 text-ink"
-        }
-      >
-        {value}
+      <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        {originalValue ? (
+          <span
+            className={
+              emphasis
+                ? "text-3xl font-medium leading-none tracking-[-0.02em] text-[#9A9A9A] line-through decoration-[#9A9A9A] decoration-[0.08em] md:text-4xl"
+                : "text-base font-medium leading-6 text-[#9A9A9A] line-through decoration-[#9A9A9A]"
+            }
+          >
+            {originalValue}
+          </span>
+        ) : null}
+        <span className={valueClassName}>{value}</span>
+        {discountLabel ? (
+          <span
+            className={
+              emphasis
+                ? "self-center rounded-pill bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-normal text-emerald-800"
+                : "self-center rounded-pill bg-emerald-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-normal text-emerald-800"
+            }
+          >
+            {discountLabel}
+          </span>
+        ) : null}
       </span>
     </div>
   );

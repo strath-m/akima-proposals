@@ -30,6 +30,8 @@ export type Package = {
   eyebrow: string;
   summary: string;
   price: string;
+  originalPrice?: string;
+  discountLabel?: string;
   priceLabel?: string;
   timeline: string;
   bestFor?: string;
