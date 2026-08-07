@@ -72,19 +72,24 @@ export function PackageDetail({
           </div>
 
           {categories.length > 0 ? (
-            <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
-              {categories.map((category) => (
-                <div key={category.title} className="flex flex-col gap-5">
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
-                    {category.title}
-                  </h4>
-                  <ul className="flex flex-col gap-3">
-                    {(category.items ?? []).map((item, idx) => (
-                      <CategoryListItem key={idx} item={item} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div className="mt-12">
+              <h4 className="text-2xl font-semibold leading-tight text-ink">
+                Inclusions
+              </h4>
+              <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+                {categories.map((category) => (
+                  <div key={category.title} className="flex flex-col gap-5">
+                    <h5 className="text-xs font-semibold uppercase tracking-[0.14em] text-bone-600">
+                      {category.title}
+                    </h5>
+                    <ul className="flex flex-col gap-3">
+                      {(category.items ?? []).map((item, idx) => (
+                        <CategoryListItem key={idx} item={item} />
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : null}
 
