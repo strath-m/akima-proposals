@@ -191,7 +191,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             <button type="button" onClick={openEdits} className="oct-btn oct-btn--sm oct-btn--secondary oct-wide-only">
               Request Edits
             </button>
-            <button type="button" onClick={openAccept} className="oct-btn oct-btn--sm oct-btn--primary">
+            <button type="button" onClick={openAccept} className="oct-btn oct-btn--sm oct-btn--primary oct-wide-only">
               Accept Proposal
             </button>
           </div>

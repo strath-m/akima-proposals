@@ -98,14 +98,6 @@ body:has(.oct) {
   display: block;
 }
 
-/* Not in the design: at 14px the logo plus the Accept button overflow a
-   375px phone, so the logo steps down on narrow screens. */
-@media (max-width: 420px) {
-  .oct-header-logo {
-    height: 11px;
-  }
-}
-
 .oct-header-actions {
   display: flex;
   align-items: center;
