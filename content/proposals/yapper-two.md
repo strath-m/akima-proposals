@@ -43,7 +43,7 @@ team:
   - name: Strath McKay
     role: Co-founder · Brand & visual design
     bio: 8+ years across branding, identity and product UI. Spent the last 4 years designing for crypto, where trust decides everything.
-  - name: Jake
+  - name: Jake Ferguson
     role: Co-founder · UX & strategy
     bio: Leads research, strategy and page structure, so every design decision ties back to the business.
 packages:
@@ -111,7 +111,7 @@ packages:
     categories:
       - title: Brand Identity Package
         items:
-          - Everything in Option 01, including strategy, visual direction, logo suite, identity system, brand guidelines and social kit
+          - Everything in Option 01, including full identity package, strategy, visual direction, logo suite, identity system, brand guidelines and social kit
       - title: Website strategy & planning
         items:
           - Audit of the current site to find where the professional story drops off
@@ -156,9 +156,9 @@ Then we’ll build a clearer, more credible identity and put it to work across t
 
 # Optional add-ons
 
-- Page built in code: On request
-- Additional pages: Quoted on request
-- Product UI screens: Quoted on request
+- Landing pages built in code: Quote on request
+- Additional pages: Quote on request
+- Product UI screens: Quote on request
 - Ongoing design support: Monthly, after the project
 
 # Exclusions
