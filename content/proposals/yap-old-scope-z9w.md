@@ -1,6 +1,6 @@
 ---
 client: Yapper
-slug: yapper-scope
+slug: yap-old-scope-z9w
 proposalTitle: Brand identity & website foundation
 preparedFor: Emmet Halm & Sean, Yapper
 preparedBy: Akima Studio

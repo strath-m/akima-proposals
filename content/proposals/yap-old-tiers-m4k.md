@@ -1,6 +1,6 @@
 ---
 client: Yapper
-slug: yapper-options
+slug: yap-old-tiers-m4k
 proposalTitle: Brand identity & website foundation
 preparedFor: Emmet Halm & Sean, Yapper
 preparedBy: Akima Studio

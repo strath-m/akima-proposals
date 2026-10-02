@@ -1,6 +1,7 @@
 ---
 client: Yapper
-slug: yapper-two
+slug: yapper
+template: oct
 proposalTitle: "Yapper Brand Identity\n& Digital Evolution"
 preparedFor: Emmet Halm • Yapper.so
 preparedBy: Akima Studio
@@ -149,10 +150,10 @@ Then we’ll build a clearer, more credible identity and put it to work across t
 # Goals
 
 - Enterprise prospects understand Yapper's value within seconds
-- A brand people recognise across the world as the simple, clean and honest choice in AI creative tools
-- Sales has a page that does the convincing for them
-- One consistent, reusable visual system across the site, product and socials
-- Prosumers and consumers still feel at home
+- Build a distinctive and trusted brand in the AI creative category
+- Give sales a stronger Enterprise page to support conversions
+- A consistent visual system across site, product and social
+- Keep Yapper familiar and approachable for prosumers
 
 # Optional add-ons
 
