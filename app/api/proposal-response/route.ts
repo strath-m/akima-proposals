@@ -26,12 +26,16 @@ function buildEmail({
   proposalTitle,
   preparedFor,
   recommendedName,
+  selectedName,
+  message,
 }: {
   action: ProposalAction;
   client: string;
   proposalTitle: string;
   preparedFor: string;
   recommendedName?: string;
+  selectedName?: string;
+  message?: string;
 }) {
   const accepted = action === "accept";
   const actionLabel = accepted ? "accepted" : "requested edits on";
@@ -46,6 +50,7 @@ function buildEmail({
     ["Proposal", proposalTitle],
     ["Recommended option", recommendedName ?? "Not specified"],
   ];
+  if (selectedName) rows.push(["Selected option", selectedName]);
 
   const htmlRows = rows
     .map(
@@ -65,7 +70,7 @@ function buildEmail({
     subject,
     text: `${preparedFor} has ${actionLabel} ${proposalTitle} for ${client}.\n\n${rows
       .map(([label, value]) => `${label}: ${value}`)
-      .join("\n")}`,
+      .join("\n")}${message ? `\n\nMessage:\n${message}` : ""}`,
     html: `
       <div style="background:#f4f0ea;padding:32px;font-family:Arial,sans-serif;color:#111111;">
         <div style="max-width:560px;margin:0 auto;background:#faf8f5;border:1px solid #ddd8d0;border-radius:12px;padding:32px;">
@@ -75,7 +80,13 @@ function buildEmail({
           )} has ${escapeHtml(actionLabel)} this proposal.</h1>
           <table style="width:100%;border-collapse:collapse;border-top:1px solid #ddd8d0;margin-top:24px;">
             ${htmlRows}
-          </table>
+          </table>${
+            message
+              ? `<p style="margin:24px 0 0;color:#111111;font-size:15px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(
+                  message
+                )}</p>`
+              : ""
+          }
         </div>
       </div>`,
   };
@@ -90,9 +101,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = (await request.json()) as { action?: unknown; slug?: unknown };
+  const body = (await request.json()) as {
+    action?: unknown;
+    slug?: unknown;
+    selectedOption?: unknown;
+    message?: unknown;
+  };
   const action = body.action;
   const slug = typeof body.slug === "string" ? body.slug : "";
+  const message =
+    typeof body.message === "string"
+      ? body.message.trim().slice(0, 5000)
+      : "";
 
   if (!isProposalAction(action) || !slug) {
     return NextResponse.json(
@@ -115,12 +135,17 @@ export async function POST(request: Request) {
   } = proposal.frontmatter;
   const recommendedName = packages.find((pkg) => pkg.id === recommendedOption)
     ?.name;
+  const selected = packages.find((pkg) => pkg.id === body.selectedOption);
   const email = buildEmail({
     action,
     client,
     proposalTitle,
     preparedFor,
     recommendedName,
+    selectedName: selected
+      ? `${selected.eyebrow} · ${selected.name} (${selected.price})`
+      : undefined,
+    message: message || undefined,
   });
 
   const response = await fetch(RESEND_ENDPOINT, {

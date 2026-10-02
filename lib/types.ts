@@ -41,6 +41,12 @@ export type Package = {
   deliverables?: string[];
 };
 
+export type PaymentStep = {
+  label: string;
+  note?: string;
+  percent: number;
+};
+
 export type ProposalFrontmatter = {
   client: string;
   slug?: string;
@@ -53,6 +59,12 @@ export type ProposalFrontmatter = {
   contact?: Contact;
   cta?: CtaConfig;
   packages: Package[];
+  // Used by the /oct template only: hero intro line and Overview rows.
+  intro?: string;
+  problem?: string;
+  goal?: string;
+  // Used by the /oct template only; defaults to 50% deposit / 50% on delivery.
+  paymentSchedule?: PaymentStep[];
 };
 
 export type ProposalSection = {

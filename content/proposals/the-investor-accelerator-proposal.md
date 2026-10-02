@@ -7,6 +7,9 @@ preparedBy: Akima Studio
 date: 28 April 2026
 validUntil: 28 May 2026
 recommendedOption: option-2
+intro: The Investor Accelerator already has strong attention coming through YouTube, X, reports, and educational content. The opportunity is improving how that traffic converts.
+problem: Right now, people are being directed to the free report and 18-Year Cycle mini-course, but the offer and next step are not always clear. This creates friction, lowers opt-in rates, and weakens the path into TIA Pro memberships.
+goal: The goal of this project is to create clearer, higher-converting landing pages that improve lead capture, build trust, and guide more qualified users into the TIA ecosystem.
 contact:
   name: Strath
   role: Co-founder, Akima Studio
