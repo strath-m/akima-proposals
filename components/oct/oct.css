@@ -561,6 +561,8 @@ body:has(.oct) {
   letter-spacing: -0.045em;
   max-width: 780px;
   text-wrap: balance;
+  /* A newline in proposalTitle forces a line break. */
+  white-space: pre-line;
 }
 
 .oct-lead {
@@ -646,6 +648,8 @@ body:has(.oct) {
   line-height: 1.7;
   max-width: 560px;
   text-wrap: pretty;
+  /* Blank lines in problem/goal become paragraph breaks. */
+  white-space: pre-line;
 }
 
 .oct-brief-text--muted {

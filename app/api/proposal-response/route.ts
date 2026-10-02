@@ -139,7 +139,8 @@ export async function POST(request: Request) {
   const email = buildEmail({
     action,
     client,
-    proposalTitle,
+    // Titles may contain a line break for the page layout; emails need one line.
+    proposalTitle: proposalTitle.replace(/\s+/g, " "),
     preparedFor,
     recommendedName,
     selectedName: selected
