@@ -1,0 +1,218 @@
+/* Phased proposal template (/[slug]/phased). Builds on oct.css, which is
+   imported alongside it; only the pieces October doesn't have live here. */
+
+/* First-screen summary: the phase to start with and what follows */
+
+.ph-start {
+  border: 1px solid var(--oct-line-strong);
+  border-radius: 12px;
+  background: var(--oct-surface);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+@media (min-width: 760px) {
+  .ph-start {
+    grid-template-columns: 1.6fr 1fr;
+  }
+}
+
+.ph-start-main {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ph-start-name {
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.ph-start-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ph-start-price .oct-total-value {
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.ph-start-reason {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--oct-text-2);
+  max-width: 520px;
+  text-wrap: pretty;
+}
+
+.oct a.ph-start-next {
+  padding: 24px;
+  border-top: 1px solid var(--oct-line);
+  background: var(--oct-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  color: var(--oct-text-2);
+  transition: background 0.2s var(--oct-ease);
+}
+
+.oct a.ph-start-next:hover {
+  background: var(--oct-hover);
+  color: var(--oct-text-2);
+}
+
+@media (min-width: 760px) {
+  .oct a.ph-start-next {
+    border-top: 0;
+    border-left: 1px solid var(--oct-line);
+  }
+}
+
+.ph-start-next-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--oct-text);
+  letter-spacing: -0.02em;
+}
+
+.ph-start-next-meta {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ph-start-foot {
+  grid-column: 1 / -1;
+  padding: 14px 24px;
+  border-top: 1px solid var(--oct-line);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--oct-text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.ph-start-foot strong {
+  color: var(--oct-text);
+  font-weight: 600;
+}
+
+/* What we heard */
+
+.ph-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+}
+
+.ph-quote {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--oct-line);
+  border-radius: 8px;
+  background: var(--oct-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ph-quote-mark {
+  font-size: 32px;
+  line-height: 1;
+  height: 20px;
+  color: var(--oct-accent-fg);
+}
+
+.ph-quote blockquote {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+/* How the project runs */
+
+.ph-plan {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+
+.ph-plan-step {
+  padding: 20px;
+  border: 1px solid var(--oct-line);
+  border-radius: 8px;
+  background: var(--oct-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ph-plan-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ph-plan-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ph-plan-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oct-text-2);
+  text-wrap: pretty;
+}
+
+/* Commitments and team */
+
+.ph-commit svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--oct-success-fg);
+}
+
+.ph-team {
+  padding: 8px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ph-person {
+  padding: 14px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ph-person + .ph-person {
+  border-top: 1px solid var(--oct-line);
+}
+
+.ph-person-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ph-person-bio {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oct-text-2);
+  text-wrap: pretty;
+}
