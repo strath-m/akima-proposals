@@ -38,6 +38,9 @@ export type OctProposalData = {
   goal?: string;
   overview?: string;
   goals?: OctBlock;
+  plan?: { when: string; title: string; body: string }[];
+  commitments?: string[];
+  team?: { name: string; role: string; bio?: string }[];
   packages: OctPackage[];
   defaultSelected: string | null;
   addons?: { label: string; note?: string }[];
@@ -48,6 +51,8 @@ export type OctProposalData = {
   notes?: string;
   contact?: Contact;
 };
+
+const SINGLE_FIRST_STEP = ["Accept the proposal", "Lock in the scope and investment above."];
 
 const STEPS = [
   ["Select an option", "Choose the package that best matches the ambition and timing."],
@@ -95,6 +100,16 @@ function BulletList({ block, marker }: { block: OctBlock; marker: "dot" | "cross
         </li>
       ))}
     </ul>
+  );
+}
+
+function Avatar({ name }: { name: string }) {
+  return /^strath/i.test(name) ? (
+    <img src="/oct/strath-avatar.png" alt={name} className="oct-avatar" />
+  ) : (
+    <span className="oct-avatar" aria-hidden>
+      {name.charAt(0)}
+    </span>
   );
 }
 
@@ -177,6 +192,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
   const hasOverview = data.problem || data.goal || data.overview;
   const hasAddons = data.addons || data.addonsMarkdown;
   const firstPayment = selected?.schedule[0];
+  const steps = multiple ? STEPS : [SINGLE_FIRST_STEP, ...STEPS.slice(1)];
 
   return (
     <div className="oct">
@@ -229,58 +245,52 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             </div>
           </section>
 
-          {hasOverview ? (
-            <Section id="overview" title="Overview">
-              <div className="oct-card">
-                {data.problem || data.goal ? (
-                  <>
-                    {data.problem ? (
-                      <div className="oct-ov-row">
-                        <div>
-                          <span className="oct-pill oct-pill--accent">Problem</span>
-                        </div>
-                        <p className="oct-ov-text" style={{ color: "var(--oct-text-2)" }}>
-                          {data.problem}
-                        </p>
-                      </div>
-                    ) : null}
-                    {data.goal ? (
-                      <div className="oct-ov-row">
-                        <div>
-                          <span className="oct-pill oct-pill--success">Goal</span>
-                        </div>
-                        <p className="oct-ov-text">{data.goal}</p>
-                      </div>
-                    ) : null}
-                  </>
-                ) : (
-                  <div className="oct-card-pad">
-                    <Markdown>{data.overview ?? ""}</Markdown>
+          {/* Overview and Goals share one section, side by side on wide screens. */}
+          {hasOverview || data.goals ? (
+            <section id="overview" className="oct-section">
+              <div className="oct-brief">
+                {hasOverview ? (
+                  <div className="oct-brief-col">
+                    <h2 className="oct-h2">Overview</h2>
+                    {data.problem || data.goal ? (
+                      <>
+                        {data.problem ? (
+                          <div className="oct-brief-item">
+                            <span className="oct-pill oct-pill--accent">Problem</span>
+                            <p className="oct-brief-text oct-brief-text--muted">{data.problem}</p>
+                          </div>
+                        ) : null}
+                        {data.goal ? (
+                          <div className="oct-brief-item">
+                            <span className="oct-pill oct-pill--success">Solution</span>
+                            <p className="oct-brief-text">{data.goal}</p>
+                          </div>
+                        ) : null}
+                      </>
+                    ) : (
+                      <Markdown>{data.overview ?? ""}</Markdown>
+                    )}
                   </div>
-                )}
+                ) : null}
+                {data.goals ? (
+                  <div id="goals" className="oct-brief-col">
+                    <h2 className="oct-h2">Goals</h2>
+                    {data.goals.items ? (
+                      <ol className="oct-brief-goals">
+                        {data.goals.items.map((goal, i) => (
+                          <li key={goal} className="oct-brief-goal">
+                            <span className="oct-goal-num">{String(i + 1).padStart(2, "0")}</span>
+                            <span>{goal}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <Markdown>{data.goals.markdown ?? ""}</Markdown>
+                    )}
+                  </div>
+                ) : null}
               </div>
-            </Section>
-          ) : null}
-
-          {data.goals ? (
-            <Section id="goals" title="Goals">
-              <div className="oct-card">
-                {data.goals.items ? (
-                  <div className="oct-rows">
-                    {data.goals.items.map((goal, i) => (
-                      <div key={goal} className="oct-goal">
-                        <span className="oct-goal-num">{String(i + 1).padStart(2, "0")}</span>
-                        <span>{goal}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="oct-card-pad">
-                    <Markdown>{data.goals.markdown ?? ""}</Markdown>
-                  </div>
-                )}
-              </div>
-            </Section>
+            </section>
           ) : null}
 
           {packages.map((p) => (
@@ -413,6 +423,69 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             </section>
           ) : null}
 
+          {data.plan?.length ? (
+            <section id="plan" className="oct-section">
+              <div className="oct-stack-6">
+                <h2 className="oct-h2">How the project runs</h2>
+                <p className="oct-sub">Clear decision points, so nothing arrives as a surprise.</p>
+              </div>
+              <ol className="oct-plan">
+                {data.plan.map((step, i) => (
+                  <li key={step.title} className="oct-plan-step">
+                    <div className="oct-plan-top">
+                      <span className="oct-goal-num">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="oct-label">{step.when}</span>
+                    </div>
+                    <span className="oct-plan-title">{step.title}</span>
+                    <span className="oct-plan-body">{step.body}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : null}
+
+          {data.commitments?.length || data.team?.length ? (
+            <Section id="working" title="How we'll work together">
+              <div className="oct-grid oct-grid--320">
+                {data.commitments?.length ? (
+                  <div className="oct-card">
+                    <div className="oct-card-head">
+                      <span className="oct-card-title">Our commitments</span>
+                    </div>
+                    <ul className="oct-list">
+                      {data.commitments.map((item) => (
+                        <li key={item} className="oct-li oct-commit">
+                          <CheckIcon size={16} strokeWidth={1.5} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                {data.team?.length ? (
+                  <div className="oct-card">
+                    <div className="oct-card-head">
+                      <span className="oct-card-title">Who you&apos;ll work with</span>
+                      <span className="oct-card-note">Senior people on every stage.</span>
+                    </div>
+                    <div className="oct-team">
+                      {data.team.map((person) => (
+                        <div key={person.name} className="oct-team-person">
+                          <Avatar name={person.name} />
+                          <div className="oct-stack-6" style={{ gap: 2 }}>
+                            <span className="oct-team-name">{person.name}</span>
+                            <span className="oct-label">{person.role}</span>
+                            {person.bio ? <span className="oct-team-bio">{person.bio}</span> : null}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </Section>
+          ) : null}
+
           {hasAddons || data.exclusions ? (
             <Section
               id="addons"
@@ -423,7 +496,9 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                   <div className="oct-card">
                     <div className="oct-card-head">
                       <span className="oct-card-title">Optional add-ons</span>
-                      <span className="oct-card-note">Available alongside any option.</span>
+                      <span className="oct-card-note">
+                        {multiple ? "Available alongside any option." : "Available whenever you need them."}
+                      </span>
                     </div>
                     {data.addons ? (
                       <div className="oct-rows">
@@ -445,7 +520,9 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                   <div className="oct-card">
                     <div className="oct-card-head">
                       <span className="oct-card-title">Exclusions</span>
-                      <span className="oct-card-note">Not included in any option.</span>
+                      <span className="oct-card-note">
+                        {multiple ? "Not included in any option." : "Not included in this scope."}
+                      </span>
                     </div>
                     <BulletList block={data.exclusions} marker="cross" />
                   </div>
@@ -511,13 +588,13 @@ export function OctProposal({ data }: { data: OctProposalData }) {
 
           <Section id="next-steps" title="Next steps">
             <div className="oct-steps">
-              {STEPS.map(([title, body], i) => (
+              {steps.map(([title, body], i) => (
                 <div key={title} className="oct-step">
                   <div className="oct-step-mark">
                     <span className="oct-step-ring">
                       <span className={`oct-step-dot ${i === 0 ? "oct-step-dot--live" : ""}`} />
                     </span>
-                    {i < STEPS.length - 1 ? <span className="oct-step-line" /> : null}
+                    {i < steps.length - 1 ? <span className="oct-step-line" /> : null}
                   </div>
                   <div className="oct-step-content">
                     <span className="oct-step-num">{String(i + 1).padStart(2, "0")}</span>
@@ -545,7 +622,9 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                   <p>
                     {accepted
                       ? `${contactName} will be in touch to confirm scope and timeline, lock in a kickoff date, and send the agreement.`
-                      : "Accept the proposal with your selected option, or request edits and we’ll send a revised version."}
+                      : multiple
+                        ? "Accept the proposal with your selected option, or request edits and we’ll send a revised version."
+                        : "Accept the proposal, or request edits and we’ll send a revised version."}
                   </p>
                   <div className="oct-pills" style={{ gap: 8 }}>
                     <span className="oct-pill oct-pill--chip oct-pill--lg">
@@ -569,13 +648,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
               {contact?.name ? (
                 <div className="oct-accept-foot">
                   <div className="oct-person">
-                    {/^strath/i.test(contact.name) ? (
-                      <img src="/oct/strath-avatar.png" alt={contact.name} className="oct-avatar" />
-                    ) : (
-                      <span className="oct-avatar" aria-hidden>
-                        {contact.name.charAt(0)}
-                      </span>
-                    )}
+                    <Avatar name={contact.name} />
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <span style={{ fontSize: 14, fontWeight: 500 }}>{contact.name}</span>
                       {contact.role ? <span className="oct-label">{contact.role}</span> : null}

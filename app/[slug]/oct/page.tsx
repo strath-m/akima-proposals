@@ -137,6 +137,9 @@ export default async function OctProposalPage({
         goal: fm.goal,
         overview: findSection(proposal, "overview")?.body,
         goals: toBlock(findSection(proposal, "goals")?.body),
+        plan: fm.plan,
+        commitments: fm.commitments,
+        team: fm.team,
         packages,
         defaultSelected,
         // "Label: note" list items become a row with a right-aligned note.

@@ -65,6 +65,11 @@ export type ProposalFrontmatter = {
   goal?: string;
   // Used by the /oct template only; defaults to 50% deposit / 50% on delivery.
   paymentSchedule?: PaymentStep[];
+  // Used by the /oct template only: "How the project runs" and
+  // "How we'll work together". Each section shows only when present.
+  plan?: { when: string; title: string; body: string }[];
+  commitments?: string[];
+  team?: { name: string; role: string; bio?: string }[];
 };
 
 export type ProposalSection = {

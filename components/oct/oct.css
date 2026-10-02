@@ -96,6 +96,63 @@ body:has(.oct) {
   gap: 12px;
 }
 
+/* Small squares where a full-width line meets the frame's side lines.
+   Only once the frame has a gutter, so they never sit on the screen edge. */
+@media (min-width: 1216px) {
+  .oct-header-inner,
+  .oct-hero,
+  .oct-section,
+  .oct-footer-inner {
+    position: relative;
+  }
+
+  .oct-header-inner::before,
+  .oct-header-inner::after,
+  .oct-hero::before,
+  .oct-hero::after,
+  .oct-section::before,
+  .oct-section::after,
+  .oct-footer-inner::before,
+  .oct-footer-inner::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 5px;
+    height: 5px;
+    background: var(--oct-control);
+    pointer-events: none;
+  }
+
+  /* Centred on the 1px lines: 2.5px either side of a line's 0.5px midpoint. */
+  .oct-header-inner::before,
+  .oct-hero::before,
+  .oct-section::before,
+  .oct-footer-inner::before {
+    left: -3px;
+  }
+
+  .oct-header-inner::after,
+  .oct-hero::after,
+  .oct-section::after,
+  .oct-footer-inner::after {
+    right: -3px;
+  }
+
+  .oct-header-inner::before,
+  .oct-header-inner::after,
+  .oct-hero::before,
+  .oct-hero::after,
+  .oct-section::before,
+  .oct-section::after {
+    bottom: -3px;
+  }
+
+  .oct-footer-inner::before,
+  .oct-footer-inner::after {
+    top: -3px;
+  }
+}
+
 .oct-header-logo {
   height: 14px;
   width: auto;
@@ -557,17 +614,60 @@ body:has(.oct) {
   text-wrap: pretty;
 }
 
-.oct-goal {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 16px;
+/* Overview + Goals, side by side */
+
+.oct-brief {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 48px 72px;
 }
 
-.oct-goal:hover {
-  background: var(--oct-hover);
+.oct-brief-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.oct-brief-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.oct-brief-item + .oct-brief-item {
+  margin-top: 12px;
+}
+
+.oct-brief-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 560px;
+  text-wrap: pretty;
+}
+
+.oct-brief-text--muted {
+  color: var(--oct-text-2);
+}
+
+.oct-brief-goals {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.oct-brief-goal {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-wrap: pretty;
 }
 
 .oct-goal-num {
@@ -576,6 +676,84 @@ body:has(.oct) {
   color: #ed775d;
   width: 20px;
   flex-shrink: 0;
+}
+
+/* How the project runs */
+
+.oct-plan {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+
+.oct-plan-step {
+  padding: 20px;
+  border: 1px solid var(--oct-line);
+  border-radius: 8px;
+  background: var(--oct-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oct-plan-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.oct-plan-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.oct-plan-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oct-text-2);
+  text-wrap: pretty;
+}
+
+/* How we'll work together */
+
+.oct-commit svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--oct-success-fg);
+}
+
+.oct-team {
+  padding: 8px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.oct-team-person {
+  padding: 14px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.oct-team-person + .oct-team-person {
+  border-top: 1px solid var(--oct-line);
+}
+
+.oct-team-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.oct-team-bio {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oct-text-2);
+  text-wrap: pretty;
 }
 
 /* Packages */
@@ -644,7 +822,7 @@ body:has(.oct) {
 .oct-cat-title {
   font-size: 14px;
   font-weight: 600;
-  color: #d4d4d4;
+  color: var(--oct-text-3);
 }
 
 .oct-cat-list {
@@ -660,9 +838,14 @@ body:has(.oct) {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: #e5e5e5;
+}
+
+/* Centre the dot on the first 24px line. */
+.oct-cat-item .oct-dot {
+  margin-top: 10px;
 }
 
 .oct-cat-desc {
