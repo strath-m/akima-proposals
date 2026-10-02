@@ -71,7 +71,7 @@ packages:
       - title: Visual direction
         items:
           - Two distinct visual directions, each grounded in the brand strategy
-          - Each direction shown in context across the website, product and social
+          - Each direction shown in context across touchpoints where the brand actually lives
           - Direction review session to lock in the final direction together
       - title: Logo suite
         items:
