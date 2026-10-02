@@ -111,7 +111,7 @@ function SelectButton({
     <button
       type="button"
       onClick={onClick}
-      className={`oct-btn ${selected ? "oct-btn--primary" : "oct-btn--secondary"}`}
+      className={`oct-btn ${selected ? "oct-btn--selected" : "oct-btn--secondary"}`}
     >
       {selected ? (
         <>

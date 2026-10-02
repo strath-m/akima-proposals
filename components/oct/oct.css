@@ -28,6 +28,7 @@ body:has(.oct) {
   --oct-accent-fg: #f5795c;
   --oct-success-bg: #022c22;
   --oct-success-fg: #34d399;
+  --oct-success-line: #10b981;
   --oct-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --oct-pad-x: clamp(20px, 5vw, 56px);
 
@@ -290,6 +291,15 @@ body:has(.oct) {
 
 .oct-btn--primary:hover {
   background: var(--oct-accent-hover);
+}
+
+.oct-btn--selected {
+  background: var(--oct-success-bg);
+  color: var(--oct-success-fg);
+}
+
+.oct-btn--selected:hover {
+  background: #064e3b;
 }
 
 .oct-btn--secondary {
@@ -673,8 +683,8 @@ body:has(.oct) {
 }
 
 .oct-cmp[data-selected="true"] {
-  border-color: var(--oct-accent);
-  box-shadow: 0 0 0 1px var(--oct-accent);
+  border-color: var(--oct-success-line);
+  box-shadow: 0 0 0 1px var(--oct-success-line);
 }
 
 .oct-cmp-top {
