@@ -149,9 +149,9 @@ Then we’ll build a clearer, more credible identity and put it to work across t
 # Goals
 
 - Enterprise prospects understand Yapper's value within seconds
-- A brand people recognise as the simple, honest choice in AI creative tools
+- A brand people recognise across the world as the simple, clean and honest choice in AI creative tools
 - Sales has a page that does the convincing for them
-- One consistent, reusable system across the site, product and socials
+- One consistent, reusable visual system across the site, product and socials
 - Prosumers and consumers still feel at home
 
 # Optional add-ons
