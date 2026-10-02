@@ -519,9 +519,11 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                     </span>
                     {i < STEPS.length - 1 ? <span className="oct-step-line" /> : null}
                   </div>
-                  <span className="oct-step-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="oct-step-title">{title}</span>
-                  <span className="oct-step-body">{body}</span>
+                  <div className="oct-step-content">
+                    <span className="oct-step-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="oct-step-title">{title}</span>
+                    <span className="oct-step-body">{body}</span>
+                  </div>
                 </div>
               ))}
             </div>
