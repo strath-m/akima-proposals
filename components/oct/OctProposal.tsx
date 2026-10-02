@@ -103,9 +103,16 @@ function BulletList({ block, marker }: { block: OctBlock; marker: "dot" | "cross
   );
 }
 
+// Matched on first name; anyone else gets an initial.
+const PHOTOS: [RegExp, string][] = [
+  [/^strath/i, "/oct/strath-avatar.png"],
+  [/^jake/i, "/oct/jake-avatar.webp"],
+];
+
 function Avatar({ name }: { name: string }) {
-  return /^strath/i.test(name) ? (
-    <img src="/oct/strath-avatar.png" alt={name} className="oct-avatar" />
+  const photo = PHOTOS.find(([pattern]) => pattern.test(name))?.[1];
+  return photo ? (
+    <img src={photo} alt={name} className="oct-avatar" />
   ) : (
     <span className="oct-avatar" aria-hidden>
       {name.charAt(0)}
