@@ -14,6 +14,7 @@ import { PackageDetail } from "@/components/PackageDetail";
 import { ProposalHero } from "@/components/ProposalHero";
 import { Section } from "@/components/Section";
 import { StickyNav } from "@/components/StickyNav";
+import { OctPage } from "@/components/oct/OctPage";
 
 export async function generateStaticParams() {
   return getProposalSlugs().map((slug) => ({ slug }));
@@ -42,6 +43,7 @@ export default async function ProposalPage({
   const { slug } = await params;
   const proposal = getProposalBySlug(slug);
   if (!proposal) notFound();
+  if (proposal.frontmatter.template === "oct") return <OctPage proposal={proposal} />;
 
   const { frontmatter } = proposal;
   const {

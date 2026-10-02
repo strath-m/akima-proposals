@@ -1,203 +1,180 @@
 ---
 client: Yapper
-slug: yapper
-proposalTitle: Brand identity & website foundation
-preparedFor: Emmet Halm & Sean, Yapper
+slug: yapper-two
+proposalTitle: "Yapper Brand Identity\n& Digital Evolution"
+preparedFor: Emmet Halm • Yapper.so
 preparedBy: Akima Studio
 date: 3 October 2026
 validUntil: 2 November 2026
-intro: Yapper has grown faster than its brand. This plan builds an intentional identity first, then puts it to work on the pages that sell, starting with a dedicated enterprise page.
-problem: Yapper now serves studios, agencies and enterprise teams, but the brand and site grew organically, feature by feature. They still read as consumer-first, and that's slowing down enterprise sales.
-goal: An intentional brand that earns enterprise trust without losing Yapper's warmth. It should be the simple, transparent alternative to Higgsfield, carried through the main site and a dedicated /enterprise page.
+recommendedOption: option-2
+intro: Yapper has grown faster than its brand. This proposal builds an intentional identity first, then puts it to work on the pages that sell, including a dedicated enterprise page.
+problem: Yapper has grown from a tool for curious creators into a platform used by filmmakers, studios, agencies and enterprise teams. But the brand and site have evolved organically and still feel consumer-first, making it harder for professional buyers to immediately see Yapper as the serious choice.
+goal: |-
+  We’ll start with the business, not the visuals: who Yapper is selling to, what those customers need to trust, and how the brand should stand apart.
+
+  Then we’ll build a clearer, more credible identity and put it to work across the main site and Enterprise page, while keeping Yapper warm, human and easy to use. Effective, not just impressive.
 contact:
   name: Strath
   role: Co-founder, Akima Studio
   email: strath@akima.studio
   phone: +61 432 279 718
 cta:
-  acceptLabel: Accept Phase 1
+  acceptLabel: Accept Proposal
   requestEditsLabel: Request Edits
-
-# Used by the /phased template only.
-planTotal: USD $14,000
-planTimeline: ~7 weeks across both phases
-startReason: Everything else, including the site, the enterprise page and eventually the product, builds on it. Start here, see how we work together, then decide on Phase 2.
-heardBy: Emmet, on our discovery call (lightly edited)
-heard:
-  - Design is one of our big bottlenecks right now.
-  - The site doesn't look good for enterprise. It's not super trustworthy, and we're not communicating the main value we have.
-  - We want effective design, not necessarily the design that looks the best.
-  - Where they're overwhelming and maximalist, we want to be simple and clear. Where they're opaque, we want to be transparent.
-  - Friendly for prosumers, like Canva, and also great for business.
-  - It should feel a bit warmer, a bit friendlier, a bit more human.
 plan:
   - when: Week 1
     title: Strategy sign-off
-    body: Workshop with Emmet and Sean. We agree on positioning, audience and personality before any visuals.
+    body: Workshop with key stakeholders. We agree on positioning, audience and personality before any visuals.
   - when: Week 2
     title: Direction lock
     body: Two visual directions, each with its reasoning. We choose one together.
   - when: Week 4
     title: Identity delivered
-    body: Full identity system, guidelines and social assets. Then you decide on Phase 2.
+    body: Full identity system, guidelines and social assets. Option 01 wraps up here.
   - when: Weeks 5–7
     title: Pages designed
-    body: Wireframes reviewed first, then 1:1 interactive prototypes and handoff.
+    body: For Option 02. Wireframes reviewed first, then interactive prototypes and handoff.
 commitments:
   - No big reveals. You'll see the work at every checkpoint, and nothing moves forward without your sign-off.
-  - If neither visual direction feels right, we'll develop a third at no extra cost.
-  - Two rounds of revisions at every stage.
-  - A weekly check-in timed for San Francisco, Toronto and Australia, plus a shared Slack channel.
+  - A round of revisions at every stage.
+  - A weekly check-in timed for San Francisco, Toronto and Australia, plus a shared communication channel.
   - You own all final files on final payment.
 team:
   - name: Strath McKay
     role: Co-founder · Brand & visual design
-    bio: 8+ years across branding, identity and product UI. Most recently four years designing for crypto, where trust decides everything.
-  - name: Jake
+    bio: 8+ years across branding, identity and product UI. Spent the last 4 years designing for crypto, where trust decides everything.
+  - name: Jake Ferguson
     role: Co-founder · UX & strategy
     bio: Leads research, strategy and page structure, so every design decision ties back to the business.
-nextPhase:
-  id: phase-2
-  eyebrow: Phase 2
-  name: Main landing page + /enterprise
-  summary: We put the new identity to work on the two pages that matter most for growth. The main site needs to stay friendly for prosumers while signalling professional credibility, and /enterprise is a focused page your team can send straight after a first sales call.
-  price: USD $6,000
-  timeline: ~2–3 weeks
-  note: Confirmed once Phase 1 is signed off. The price is held for 60 days after Phase 1 delivery.
-  categories:
-    - title: Research & planning
-      items:
-        - Audit of the current site, covering what works and where the professional story drops off
-        - Review of competitor landing pages, including Higgsfield, Krea and leading creative tools
-        - Enterprise discovery session covering buyers, sales objections, procurement questions and the use cases that close deals
-        - Messaging hierarchy for both pages, balancing prosumer and enterprise audiences
-        - Page structure, conversion paths and low-fidelity wireframes, reviewed together before visual design
-    - title: Main landing page
-      items:
-        - High-fidelity design for desktop, tablet and mobile
-        - A clearer story for what Yapper is, Yapper Agent and how studios and agencies use it
-        - Generated-media art direction applied throughout
-        - Headline and key messaging direction for each section
-    - title: /enterprise page
-      items:
-        - High-fidelity design for desktop, tablet and mobile
-        - Sections for use cases, cost efficiency, team collaboration and trust
-        - A proof inventory, with gaps flagged for you to fill
-        - An enterprise contact or demo path built for outbound sales
-    - title: Prototype & handoff
-      items:
-        - 1:1 interactive prototypes, including hover states, transitions and scroll motion
-        - Motion specs for timing, easing and behaviour
-        - Page component library built on the Phase 1 UI foundation
-        - Handoff session with Sean and a design review of the build before launch
-
 packages:
-  - id: phase-1
-    eyebrow: Phase 1
-    name: Brand identity system
-    summary: A complete, strategy-led identity that makes Yapper credible for enterprise while keeping the warmth that makes it Yapper. It covers strategy, visual direction, the full identity system, core UI styling, guidelines and channel assets.
+  - id: option-1
+    eyebrow: Option 01
+    name: Brand Identity Package
+    summary: A complete, strategy-led identity that makes Yapper credible for enterprise while keeping the warmth that makes it Yapper. It covers strategy, visual direction, a full logo redesign, the identity system, brand guidelines and a social kit, ready for your team to roll out.
     price: USD $8,000
     timeline: ~4 weeks
-    recommended: true
+    bestFor: Getting the foundation right first and seeing how we work together before taking on the website.
+    recommended: false
+    comparisonHighlights:
+      - Brand strategy workshop and competitor review
+      - Two visual directions, one locked in together
+      - Full logomark and wordmark redesign
+      - Complete identity system and brand guidelines
+      - Social kit for X and YouTube
     categories:
       - title: Strategy & discovery
         items:
-          - Brand strategy workshop with Emmet and Sean, covering goals, audience, positioning, personality and what Yapper should never become
-          - Category review of Higgsfield, Krea and adjacent creative tools
-          - Audience review across prosumers, studios, agencies and enterprise buyers
-          - Brand strategy summary, covering positioning, personality, messaging pillars and tone of voice
+          - Brand strategy workshop with key stakeholders to define goals, positioning and what Yapper should never become
+          - Focused competitor and category review of the AI creative tools that matter most
+          - Audience priorities across prosumers, professional creators, studios, agencies and enterprise buyers, identifying what each audience needs to understand and trust
+          - Brand strategy document covering positioning, personality, messaging pillars and tone of voice
       - title: Visual direction
         items:
-          - Two distinct visual directions, each with its reasoning
-          - Examples of each direction applied to the site, product and social channels
-          - Direction review session to lock in one direction together
+          - Two distinct visual directions, each grounded in the brand strategy
+          - Each direction shown in context across touchpoints where the brand actually lives
+          - Direction review session to lock in the final direction together
+      - title: Logo suite
+        items:
+          - Full logomark and wordmark redesign
+          - 2 refined logo concepts based on the brand strategy session and agreed visual direction
+          - Full packaged logo suite including primary, secondary and icon variants, delivered in black, white and colour as EPS, SVG and PNG files to cover all brand use cases
       - title: Identity system
         items:
-          - Wordmark refresh or redesign, decided in strategy, with secondary versions and an app icon
-          - Logo versions in colour, black and white, with usage rules
-          - Typography system covering typefaces and a hierarchy for marketing and product use
-          - Colour system covering palettes, tonal scales, UI colour logic and accessibility checks
-          - Graphic language covering shapes, containers, layout and motion principles
-          - Generative-media art direction for how Yapper's own imagery and video should look and feel
+          - Typography system with brand typefaces and a clear hierarchy for marketing and product
+          - Colour palette with primary, supporting and tonal scales, built for accessible UI
+          - Graphic language covering shapes, layouts and motion principles
+          - Generative media art direction that defines how Yapper's AI imagery and video look and feel
       - title: Digital foundation
         items:
-          - Core UI styling for buttons, cards, inputs, navigation, spacing, corner radius and states
-          - A base the landing pages and product can build on
-      - title: Guidelines & assets
+          - Core UI styling for buttons, cards, inputs, navigation, spacing, radius and states
+          - A scalable base for the website and product to build on consistently
+      - title: Brand guidelines & assets
         items:
-          - Brand guidelines covering strategy, logo, type, colour, graphic language, media and digital use
-          - X/Twitter profile and banner, YouTube banner and avatars
-          - Reusable social post templates
-          - All source files and exports, organised for handoff
+          - Full brand guidelines covering strategy, logo usage, typography, colour, graphic language, media and digital application
+          - Social kit with X and YouTube banners, profile avatars and reusable post templates
+          - All source files, organised and ready for handoff
+
+  - id: option-2
+    eyebrow: Option 02
+    name: Complete Brand & Website Package
+    summary: "Our recommended engagement. Everything discussed on the call: the full Brand Identity Package, then the new system applied to Yapper's two highest-priority commercial touchpoints, the main landing page and a dedicated Enterprise page."
+    price: USD $14,000
+    timeline: ~6–7 weeks
+    bestFor: Fixing the bottleneck you described, a site that doesn't yet earn enterprise trust, with a brand and the pages that sell it.
+    recommended: true
+    comparisonHighlights:
+      - Everything in the Brand Identity Package
+      - Main landing page redesign
+      - Dedicated Enterprise page for sales
+      - Interactive prototypes with priority motion
+      - Component library and developer handoff
+    categories:
+      - title: Brand Identity Package
+        items:
+          - Everything in Option 01, including full identity package, strategy, visual direction, logo suite, identity system, brand guidelines and social kit
+      - title: Website strategy & planning
+        items:
+          - Audit of the current site to find where the professional story drops off
+          - Landing page review across the AI creative category
+          - Enterprise discovery session covering buyers, objections, procurement questions and the use cases that win deals
+          - Messaging hierarchy, page structure and wireframes for both pages, signed off before visual design
+      - title: Main landing page
+        items:
+          - High-fidelity design across desktop, tablet and mobile
+          - A sharper story for what Yapper is, how Yapper Agent works and how studios and agencies use it
+          - Generative media art direction applied throughout
+          - Messaging hierarchy and draft headline/subheadline direction for each section
+      - title: Enterprise page
+        items:
+          - High-fidelity design across desktop, tablet and mobile
+          - Sections for use cases, cost efficiency, team collaboration and trust
+          - Enterprise proof inventory covering customer logos, testimonials, usage data, savings claims, workflow examples and trust signals, with gaps flagged for Yapper to supply or validate
+          - A clear demo or contact path built for outbound sales
+      - title: Prototype & handoff
+        items:
+          - Interactive prototype covering key interactions, page transitions and priority motion behaviour
+          - Motion direction and implementation notes for priority interactions
+          - Page component library built on the brand's UI foundation
+          - Handoff session with your team, plus a design review of the build before launch
 ---
 
 # Overview
 
-Yapper now serves studios, agencies and enterprise teams, but the brand and site grew organically, feature by feature. They still read as consumer-first, and that's slowing down enterprise sales.
+Yapper has grown from a tool for curious creators into a platform used by filmmakers, studios, agencies and enterprise teams. But the brand and site have evolved organically and still feel consumer-first, making it harder for professional buyers to immediately see Yapper as the serious choice.
 
-The goal is an intentional brand that earns enterprise trust without losing Yapper's warmth. It should be the simple, transparent alternative to Higgsfield, carried through the main site and a dedicated /enterprise page.
+We’ll start with the business, not the visuals: who Yapper is selling to, what those customers need to trust, and how the brand should stand apart.
+
+Then we’ll build a clearer, more credible identity and put it to work across the main site and Enterprise page, while keeping Yapper warm, human and easy to use. Effective, not just impressive.
 
 # Goals
 
-- Build an intentional brand that earns enterprise trust without becoming sterile or corporate
-- Position Yapper as the simple, transparent alternative to Higgsfield
-- Stay friendly for prosumers while making professional use obvious
-- Give the sales team a dedicated /enterprise page they can send after a first call
-- Create a foundation that carries through the site, product, socials and content
+- Enterprise prospects understand Yapper's value within seconds
+- A brand people recognise across the world as the simple, clean and honest choice in AI creative tools
+- Sales has a page that does the convincing for them
+- One consistent, reusable visual system across the site, product and socials
+- Prosumers and consumers still feel at home
 
 # Optional add-ons
 
-- Page build in Framer or Webflow: Quoted after Phase 2
-- Additional pages: Quoted on request
-- Motion and generated-media asset pack: Quoted on request
-- Enterprise sales deck template: Quoted on request
-- Ongoing design support: Monthly, after the project or while you hire
+- Landing pages built in code: Quote on request
+- Additional pages: Quote on request
+- Product UI screens: Quote on request
+- Ongoing design support: Monthly, after the project
 
 # Exclusions
 
-- Development and build, unless added
-- Product UI redesign beyond the core UI styling
-- Long-form copywriting (we set messaging and headlines)
-- Video production and editing
+- Development and build (available on request)
+- Full Yapper application redesign
+- A complete production design system (core UI styling is included)
+- Marketing pages beyond the main landing page and Enterprise page
+- Final long-form website copy and detailed product, technical, security or legal content
+- Production of generated image or video assets at scale
 - Paid font licences and third-party tools
 - Verifying product, pricing or security claims before publication
 
 # Payment & terms
 
 - Prices are in USD
-- Phase 1 is 50% to start and 50% on delivery
-- Phase 2 is confirmed after Phase 1 sign-off, also 50% to start and 50% on delivery
-- The Phase 2 price is held for 60 days after Phase 1 delivery
-- To lock in both phases now, the total is USD $13,300 (5% off), split 50/50
+- 50% to start and 50% on delivery
 - Proposal valid until 2 November 2026
 - Work outside scope is billed at USD $100/hour or re-scoped as needed
-
-# Next steps
-
-1. Accept Phase 1: Accepting doesn't take any payment.
-2. Agreement and deposit: We send the agreement and the USD $4,000 deposit invoice.
-3. Strategy workshop: We book a session with Emmet and Sean in week 1.
-4. Direction and identity: Direction review in week 2, with the identity delivered in week 4.
-5. Decide on Phase 2: Continue to the pages, with the price held for 60 days.
-
-# FAQs
-
-## Do we need to commit to Phase 2 now?
-
-No. Accepting this proposal books Phase 1 only. Once the identity is signed off, you decide whether to continue, and the Phase 2 price is held for 60 days.
-
-## How involved can Sean be?
-
-As involved as he likes. We'd love Sean in the strategy workshop and at every checkpoint, and work in progress lives in Figma so feedback happens in context, not in one big reveal.
-
-## Will you redesign the wordmark or refine it?
-
-We'll decide together in the strategy phase. If the current wordmark's character is worth keeping, we'll refine it. If it's holding the brand back, we'll redesign it. Either way, it's included.
-
-## Do you build the pages?
-
-Phase 2 delivers 1:1 interactive prototypes and a component library ready for your team to build. If you'd rather we build them in Framer or Webflow, we'll quote that separately.
-
-## What if you hire a founding designer during the project?
-
-Everything is documented in the guidelines and organised Figma files, and we'll run a handover session so your new designer can pick it up straight away.
