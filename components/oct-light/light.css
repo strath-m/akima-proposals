@@ -52,6 +52,19 @@ body:has(.oct-light .oct) {
   color: #dc2626;
 }
 
+/* No squares where the frame lines cross. */
+
+.oct-light .oct-header-inner::before,
+.oct-light .oct-header-inner::after,
+.oct-light .oct-hero::before,
+.oct-light .oct-hero::after,
+.oct-light .oct-section::before,
+.oct-light .oct-section::after,
+.oct-light .oct-footer-inner::before,
+.oct-light .oct-footer-inner::after {
+  content: none;
+}
+
 /* Logos are white artwork; invert them to black. */
 
 .oct-light .oct-header-logo,
