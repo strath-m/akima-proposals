@@ -1,0 +1,127 @@
+/* Light theme for the October template. Wraps the unchanged October page in
+   .oct-light and swaps its tokens and the few hard-coded colours in oct.css.
+   Nothing here applies unless .oct-light is present. */
+
+html:has(.oct-light .oct),
+body:has(.oct-light .oct) {
+  background: #fafafa;
+}
+
+.oct-light .oct {
+  --oct-bg: #fafafa;
+  --oct-surface: #ffffff;
+  --oct-hover: #f4f4f4;
+  --oct-raised: #f1f1f1;
+  --oct-chip: #eeeeee;
+  --oct-line: #e6e6e6;
+  --oct-line-strong: #d9d9d9;
+  --oct-control: #c4c4c4;
+  --oct-text: #171717;
+  --oct-text-2: #525252;
+  --oct-text-3: #737373;
+  --oct-text-4: #a3a3a3;
+  --oct-accent: #ea512f;
+  --oct-accent-hover: #d4441f;
+  --oct-accent-bg: #fdebe5;
+  --oct-accent-fg: #c93f20;
+  --oct-success-bg: #e3f7ee;
+  --oct-success-fg: #047857;
+  --oct-success-line: #10b981;
+}
+
+/* Text and links */
+
+.oct-light .oct a:hover {
+  color: #000;
+}
+
+.oct-light .oct ::selection {
+  background: var(--oct-text);
+  color: #fff;
+}
+
+.oct-light .oct-goal-num {
+  color: var(--oct-accent-fg);
+}
+
+.oct-light .oct-cat-item {
+  color: #262626;
+}
+
+.oct-light .oct-error {
+  color: #dc2626;
+}
+
+/* Logos are white artwork; invert them to black. */
+
+.oct-light .oct-header-logo,
+.oct-light .oct-footer img {
+  filter: invert(1);
+}
+
+/* Surfaces that were pure black */
+
+.oct-light .oct-header {
+  background: rgba(250, 250, 250, 0.85);
+}
+
+.oct-light .oct-bestfor {
+  border-color: var(--oct-line);
+}
+
+.oct-light .oct-bestfor,
+.oct-light .oct-accept-foot,
+.oct-light .oct-modal-foot,
+.oct-light .oct-recap {
+  background: var(--oct-bg);
+}
+
+.oct-light .oct-bar {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.oct-light .oct-copy:hover {
+  background: var(--oct-hover);
+}
+
+/* Buttons */
+
+.oct-light .oct-btn--primary {
+  color: #fff;
+}
+
+.oct-light .oct-btn--selected:hover {
+  background: #cdf1e0;
+}
+
+.oct-light .oct-btn--secondary {
+  color: var(--oct-text);
+}
+
+.oct-light .oct-btn--secondary:hover {
+  border-color: var(--oct-text);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Modal */
+
+.oct-light .oct-backdrop {
+  background: rgba(23, 23, 23, 0.32);
+}
+
+.oct-light .oct-modal {
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.14);
+}
+
+.oct-light .oct-agree-box {
+  border-color: var(--oct-control);
+  color: #fff;
+}
+
+.oct-light .oct-textarea {
+  background: var(--oct-surface);
+}
+
+.oct-light .oct-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
