@@ -27,13 +27,22 @@ function scheduleFor(pkg: Package, steps: PaymentStep[]) {
   const numbers = pkg.price.match(/\d[\d,]*(\.\d+)?/g);
   const total = numbers?.length === 1 ? Number(numbers[0].replace(/,/g, "")) : null;
   const currency = pkg.price.match(/^(AUD|USD)/i)?.[1].toUpperCase() ?? "AUD";
-  return steps.map((step) => ({
+  const schedule = steps.map((step) => ({
     ...step,
     amount:
       total === null
         ? `${step.percent}% of total`
         : `${currency} $${Math.round((total * step.percent) / 100).toLocaleString("en-AU")}`,
   }));
+  if (pkg.ongoing) {
+    schedule.push({
+      label: pkg.ongoing.label ?? "Ongoing",
+      note: pkg.ongoing.note,
+      percent: 0,
+      amount: pkg.ongoing.price,
+    });
+  }
+  return schedule;
 }
 
 function toPackage(pkg: Package, steps: PaymentStep[]): OctPackage {
@@ -58,6 +67,7 @@ function toPackage(pkg: Package, steps: PaymentStep[]): OctPackage {
     price: pkg.price,
     originalPrice: pkg.originalPrice,
     discountLabel: pkg.discountLabel,
+    ongoing: pkg.ongoing,
     timeline: pkg.timeline,
     bestFor: pkg.bestFor,
     recommended: !!pkg.recommended,
@@ -108,6 +118,9 @@ export function OctPage({ proposal }: { proposal: Proposal }) {
         plan: fm.plan,
         commitments: fm.commitments,
         team: fm.team,
+        nextSteps: fm.nextSteps,
+        brief: fm.brief,
+        stages: fm.stages,
         packages,
         defaultSelected,
         // "Label: note" list items become a row with a right-aligned note.

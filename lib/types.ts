@@ -39,6 +39,9 @@ export type Package = {
   comparisonHighlights?: string[];
   categories?: Category[];
   deliverables?: string[];
+  // Used by the /oct template only: a recurring fee on top of `price`, e.g. a
+  // monthly partnership. Shown beside the price and as the last payment row.
+  ongoing?: { price: string; label?: string; note?: string };
 };
 
 export type PaymentStep = {
@@ -73,6 +76,20 @@ export type ProposalFrontmatter = {
   plan?: { when: string; title: string; body: string }[];
   commitments?: string[];
   team?: { name: string; role: string; bio?: string }[];
+  // Used by the /oct template only; replaces the default "Next steps".
+  nextSteps?: { title: string; body: string }[];
+  // Used by the /oct template only: a big-type brief that replaces the
+  // Overview/Goals section. Headline lines after the first are muted.
+  brief?: {
+    label?: string;
+    headline: string;
+    text?: string;
+    goalsLabel?: string;
+    goals?: { title: string; text: string }[];
+  };
+  // Used by the /oct template only: a short timeline ("How we get there")
+  // shown straight after the brief.
+  stages?: { label?: string; items: { when: string; title: string; body: string }[] };
 };
 
 export type ProposalSection = {

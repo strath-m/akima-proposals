@@ -3,6 +3,11 @@
 import { useState } from "react";
 import type { OctPackage } from "./OctProposal";
 
+// The upfront price, plus any recurring fee: "AUD $9,000 + $1,500/month".
+export function fullPrice(p: OctPackage) {
+  return p.ongoing ? `${p.price} + ${p.ongoing.price.replace(/^(AUD|USD)\s*/i, "")}` : p.price;
+}
+
 export function CheckIcon({ size, strokeWidth = 1.6 }: { size: number; strokeWidth?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -157,7 +162,7 @@ export function ResponseModal({
             </div>
             <div className="oct-recap-row">
               <span>Total</span>
-              <span>{selected.price}</span>
+              <span>{fullPrice(selected)}</span>
             </div>
             {firstPayment ? (
               <div className="oct-recap-row oct-recap-row--due">

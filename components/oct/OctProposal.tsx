@@ -3,8 +3,8 @@
 import { ReactNode, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { CategoryItem, Contact } from "@/lib/types";
-import { CheckIcon, CopyIcon, CrossIcon, ResponseModal } from "./ResponseModal";
+import type { CategoryItem, Contact, ProposalFrontmatter } from "@/lib/types";
+import { CheckIcon, CopyIcon, CrossIcon, ResponseModal, fullPrice } from "./ResponseModal";
 
 /** A Markdown section, either as list items (the design's look) or raw Markdown. */
 export type OctBlock = { items?: string[]; markdown?: string };
@@ -17,6 +17,7 @@ export type OctPackage = {
   price: string;
   originalPrice?: string;
   discountLabel?: string;
+  ongoing?: { price: string; label?: string; note?: string };
   timeline: string;
   bestFor?: string;
   recommended: boolean;
@@ -41,6 +42,9 @@ export type OctProposalData = {
   plan?: { when: string; title: string; body: string }[];
   commitments?: string[];
   team?: { name: string; role: string; bio?: string }[];
+  nextSteps?: { title: string; body: string }[];
+  brief?: ProposalFrontmatter["brief"];
+  stages?: ProposalFrontmatter["stages"];
   packages: OctPackage[];
   defaultSelected: string | null;
   addons?: { label: string; note?: string }[];
@@ -199,7 +203,9 @@ export function OctProposal({ data }: { data: OctProposalData }) {
   const hasOverview = data.problem || data.goal || data.overview;
   const hasAddons = data.addons || data.addonsMarkdown;
   const firstPayment = selected?.schedule[0];
-  const steps = multiple ? STEPS : [SINGLE_FIRST_STEP, ...STEPS.slice(1)];
+  const steps =
+    data.nextSteps?.map((s) => [s.title, s.body]) ??
+    (multiple ? STEPS : [SINGLE_FIRST_STEP, ...STEPS.slice(1)]);
 
   return (
     <div className="oct">
@@ -210,14 +216,6 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             alt="Akima Studio"
             className="oct-header-logo"
           />
-          <div className="oct-header-actions">
-            <button type="button" onClick={openEdits} className="oct-btn oct-btn--sm oct-btn--secondary oct-wide-only">
-              Request Edits
-            </button>
-            <button type="button" onClick={openAccept} className="oct-btn oct-btn--sm oct-btn--primary oct-wide-only">
-              Accept Proposal
-            </button>
-          </div>
         </div>
       </header>
 
@@ -234,6 +232,14 @@ export function OctProposal({ data }: { data: OctProposalData }) {
               </div>
               <h1 className="oct-h1">{data.proposalTitle}</h1>
               {data.intro ? <p className="oct-lead">{data.intro}</p> : null}
+              {packages.length ? (
+                <a href={multiple ? "#options" : `#${packages[0].id}`} className="oct-btn oct-btn--primary oct-hero-cta">
+                  See pricing
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+              ) : null}
             </div>
             <div className="oct-meta">
               {[
@@ -252,8 +258,58 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             </div>
           </section>
 
+          {data.brief ? (
+            <section id="overview" className="oct-section oct-brief2">
+              <div className="oct-brief2-head">
+                <span className="oct-pill oct-pill--accent">{data.brief.label ?? "The brief"}</span>
+                <h2 className="oct-brief2-h">
+                  {data.brief.headline.split("\n").map((line, i) => (
+                    <span key={i} className={i ? "oct-brief2-muted" : undefined}>
+                      {line}
+                    </span>
+                  ))}
+                </h2>
+                {data.brief.text ? <p className="oct-brief2-text">{data.brief.text}</p> : null}
+              </div>
+              {data.brief.goals?.length ? (
+                <div id="goals" className="oct-brief2-goals">
+                  <span className="oct-brief2-label">{data.brief.goalsLabel ?? "Project goals"}</span>
+                  <ol className="oct-brief2-list">
+                    {data.brief.goals.map((goal, i) => (
+                      <li key={goal.title} className="oct-brief2-goal">
+                        <span className="oct-brief2-num">{String(i + 1).padStart(2, "0")}</span>
+                        <p>
+                          <strong>{/[.!?]$/.test(goal.title) ? goal.title : `${goal.title}.`}</strong> {goal.text}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
+            </section>
+          ) : null}
+
+          {data.stages?.items.length ? (
+            <section id="approach" className="oct-section oct-brief2 oct-stages">
+              <span className="oct-brief2-label">{data.stages.label ?? "How we get there"}</span>
+              <ol className="oct-stages-list">
+                {data.stages.items.map((stage, i, all) => (
+                  <li key={stage.title} className="oct-stage" data-first={i === 0} data-last={i === all.length - 1}>
+                    <span className="oct-stage-when">{stage.when}</span>
+                    <span className="oct-stage-track" aria-hidden>
+                      <span className="oct-stage-dot" />
+                      <span className="oct-stage-line" />
+                    </span>
+                    <span className="oct-stage-title">{stage.title}</span>
+                    <span className="oct-stage-body">{stage.body}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : null}
+
           {/* Overview and Goals share one section, side by side on wide screens. */}
-          {hasOverview || data.goals ? (
+          {!data.brief && (hasOverview || data.goals) ? (
             <section id="overview" className="oct-section">
               <div className="oct-brief">
                 {hasOverview ? (
@@ -320,6 +376,12 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                     {p.originalPrice ? <span className="oct-strike">{p.originalPrice}</span> : null}
                     {p.price}
                   </span>
+                  {p.ongoing ? (
+                    <span className="oct-fact-text oct-ongoing">
+                      then {p.ongoing.price}
+                      {p.ongoing.note ? <span className="oct-label">{p.ongoing.note}</span> : null}
+                    </span>
+                  ) : null}
                   {p.discountLabel ? (
                     <span className="oct-pill oct-pill--success" style={{ alignSelf: "flex-start" }}>
                       {p.discountLabel}
@@ -408,6 +470,12 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                       <span className="oct-cmp-price">{p.price}</span>
                       <span className="oct-pill oct-pill--chip">{p.timeline}</span>
                     </div>
+                    {p.ongoing ? (
+                      <span className="oct-label oct-cmp-ongoing">
+                        then {p.ongoing.price}
+                        {p.ongoing.note ? ` · ${p.ongoing.note}` : ""}
+                      </span>
+                    ) : null}
                     <div className="oct-rule" />
                     <ul className="oct-check-list">
                       {p.highlights.map((h) => (
@@ -436,7 +504,13 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                 <h2 className="oct-h2">How the project runs</h2>
                 <p className="oct-sub">Clear decision points, so nothing arrives as a surprise.</p>
               </div>
-              <ol className="oct-plan">
+              <ol
+                className={
+                  data.plan.length % 3 === 0 && data.plan.length % 4 !== 0
+                    ? "oct-plan oct-plan--thirds"
+                    : "oct-plan"
+                }
+              >
                 {data.plan.map((step, i) => (
                   <li key={step.title} className="oct-plan-step">
                     <div className="oct-plan-top">
@@ -557,7 +631,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                   ))}
                 </div>
                 <div className="oct-total">
-                  <span style={{ color: "var(--oct-text-2)" }}>Total</span>
+                  <span style={{ color: "var(--oct-text-2)" }}>{selected?.ongoing ? "Project total" : "Total"}</span>
                   <span className="oct-total-value">{selected?.price ?? "—"}</span>
                 </div>
               </div>
@@ -576,10 +650,15 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             <Section id="faqs" title="FAQs">
               <div className="oct-card">
                 {data.faqs.map((faq) => (
-                  <div key={faq.question} className="oct-faq">
-                    <span className="oct-faq-q">{faq.question}</span>
-                    <Markdown>{faq.answer}</Markdown>
-                  </div>
+                  <details key={faq.question} className="oct-faq">
+                    <summary className="oct-faq-q">
+                      {faq.question}
+                      <span className="oct-faq-icon" aria-hidden />
+                    </summary>
+                    <div className="oct-faq-a">
+                      <Markdown>{faq.answer}</Markdown>
+                    </div>
+                  </details>
                 ))}
               </div>
             </Section>
@@ -637,7 +716,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                     <span className="oct-pill oct-pill--chip oct-pill--lg">
                       {selected?.eyebrow ?? "No option selected"}
                     </span>
-                    <span className="oct-pill oct-pill--chip oct-pill--lg">{selected?.price ?? "—"}</span>
+                    <span className="oct-pill oct-pill--chip oct-pill--lg">{selected ? fullPrice(selected) : "—"}</span>
                     <span className="oct-pill oct-pill--chip oct-pill--lg">{selected?.timeline ?? "—"}</span>
                   </div>
                 </div>
@@ -712,7 +791,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
               <span className="oct-label">
                 {selected ? `${selected.eyebrow} · ${selected.timeline}` : "No option selected"}
               </span>
-              <span className="oct-total-value">{selected?.price ?? "—"}</span>
+              <span className="oct-total-value">{selected ? fullPrice(selected) : "—"}</span>
             </div>
             <button type="button" onClick={openAccept} className="oct-btn oct-btn--primary">
               Accept Proposal
