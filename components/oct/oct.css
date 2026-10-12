@@ -89,7 +89,8 @@ body:has(.oct) {
 
 .oct-header-inner {
   height: 64px;
-  padding: 0 16px;
+  /* Same side padding as the sections, so the logo lines up with the content. */
+  padding: 0 var(--oct-pad-x);
   display: flex;
   align-items: center;
   justify-content: space-between;
