@@ -89,8 +89,7 @@ body:has(.oct) {
 
 .oct-header-inner {
   height: 64px;
-  /* Same side padding as the sections, so the logo lines up with the content. */
-  padding: 0 var(--oct-pad-x);
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -192,11 +191,6 @@ body:has(.oct) {
   letter-spacing: -0.035em;
   line-height: 1.15;
   text-wrap: balance;
-}
-
-/* Option titles, e.g. "Launch Store". */
-.oct-section--package .oct-h2-lg {
-  font-size: 32px;
 }
 
 .oct-h3 {
@@ -842,8 +836,8 @@ body:has(.oct) {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  row-gap: 36px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
 }
 
 .oct-stage {
@@ -900,6 +894,61 @@ body:has(.oct) {
   line-height: 1.5;
   color: var(--oct-text-2);
   text-wrap: pretty;
+}
+
+/* On phones the timeline runs down the page: dot and line on the left,
+   the line joining each dot to the next. */
+@media (max-width: 767px) {
+  .oct-stages-list {
+    grid-auto-flow: row;
+  }
+
+  .oct-stage {
+    display: grid;
+    grid-template-columns: 12px minmax(0, 1fr);
+    grid-template-areas:
+      "track when"
+      "track title"
+      "track body";
+    column-gap: 18px;
+    row-gap: 6px;
+  }
+
+  .oct-stage-when {
+    grid-area: when;
+  }
+
+  .oct-stage-track {
+    grid-area: track;
+    flex-direction: column;
+    padding-top: 4px;
+  }
+
+  .oct-stage-line {
+    border-top: 0;
+    border-left: 1.5px solid var(--oct-line-strong);
+    margin-top: 6px;
+  }
+
+  .oct-stage[data-last="true"] .oct-stage-line {
+    border-left-style: dashed;
+  }
+
+  .oct-stage-title {
+    grid-area: title;
+    margin-top: 0;
+    padding-right: 0;
+  }
+
+  .oct-stage-body {
+    grid-area: body;
+    padding-right: 0;
+    padding-bottom: 32px;
+  }
+
+  .oct-stage[data-last="true"] .oct-stage-body {
+    padding-bottom: 8px;
+  }
 }
 
 /* How we'll work together */
@@ -1187,84 +1236,25 @@ body:has(.oct) {
 
 /* FAQs */
 
-/* Each FAQ is a native <details> accordion, closed by default. */
+.oct-faq {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .oct-faq + .oct-faq {
   border-top: 1px solid var(--oct-line);
 }
 
 .oct-faq-q {
-  padding: 18px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  list-style: none;
-  transition: background-color 0.15s ease;
-}
-
-.oct-faq-q::-webkit-details-marker {
-  display: none;
-}
-
-.oct-faq-q:hover {
-  background: var(--oct-hover);
-}
-
-.oct-faq-q:focus-visible {
-  outline: 2px solid var(--oct-accent);
-  outline-offset: -2px;
-}
-
-/* Plus that turns into a minus when open; drawn in the text colour so it
-   works in both themes. */
-.oct-faq-icon {
-  position: relative;
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-  color: var(--oct-text-2);
-}
-
-.oct-faq-icon::before,
-.oct-faq-icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 12px;
-  height: 1.5px;
-  margin-top: -0.75px;
-  border-radius: 1px;
-  background: currentColor;
-  transition: transform 0.2s ease;
-}
-
-.oct-faq-icon::after {
-  transform: rotate(90deg);
-}
-
-.oct-faq[open] .oct-faq-icon::after {
-  transform: rotate(0deg);
-}
-
-.oct-faq-a {
-  padding: 0 20px 18px;
 }
 
 .oct-faq .oct-prose {
   font-size: 14px;
   line-height: 1.5;
-}
-
-.oct-faq .oct-prose ul {
-  list-style: disc;
-}
-
-.oct-faq .oct-prose li + li {
-  margin-top: 4px;
 }
 
 /* Next steps */
@@ -1745,4 +1735,90 @@ body:has(.oct) {
   margin: 0;
   font-size: 14px;
   color: #f87171;
+}
+
+/* November template (`template: nov`): the light theme plus these. */
+
+/* Same side padding as the sections, so the logo lines up with the content. */
+.oct--nov .oct-header-inner {
+  padding: 0 var(--oct-pad-x);
+}
+
+/* Option titles, e.g. "Launch Store". */
+.oct--nov .oct-section--package .oct-h2-lg {
+  font-size: 32px;
+}
+
+/* FAQs as native <details> accordions, closed by default. */
+.oct-faq.oct-faq--acc {
+  padding: 0;
+  display: block;
+}
+
+.oct-faq--acc .oct-faq-q {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.15s ease;
+}
+
+.oct-faq--acc .oct-faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.oct-faq--acc .oct-faq-q:hover {
+  background: var(--oct-hover);
+}
+
+.oct-faq--acc .oct-faq-q:focus-visible {
+  outline: 2px solid var(--oct-accent);
+  outline-offset: -2px;
+}
+
+/* Plus that turns into a minus when open, in the text colour so it works
+   in both themes. */
+.oct-faq-icon {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: var(--oct-text-2);
+}
+
+.oct-faq-icon::before,
+.oct-faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 1.5px;
+  margin-top: -0.75px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.oct-faq-icon::after {
+  transform: rotate(90deg);
+}
+
+.oct-faq--acc[open] .oct-faq-icon::after {
+  transform: rotate(0deg);
+}
+
+.oct-faq-a {
+  padding: 0 20px 18px;
+}
+
+.oct-faq--acc .oct-prose ul {
+  list-style: disc;
+}
+
+.oct-faq--acc .oct-prose li + li {
+  margin-top: 4px;
 }

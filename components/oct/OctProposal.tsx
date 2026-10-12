@@ -45,6 +45,9 @@ export type OctProposalData = {
   nextSteps?: { title: string; body: string }[];
   brief?: ProposalFrontmatter["brief"];
   stages?: ProposalFrontmatter["stages"];
+  // "nov" is the November template: light theme, no header buttons, a
+  // "See pricing" link in the hero, FAQ accordions, no mobile sticky bar.
+  variant?: "nov";
   packages: OctPackage[];
   defaultSelected: string | null;
   addons?: { label: string; note?: string }[];
@@ -202,13 +205,14 @@ export function OctProposal({ data }: { data: OctProposalData }) {
 
   const hasOverview = data.problem || data.goal || data.overview;
   const hasAddons = data.addons || data.addonsMarkdown;
+  const nov = data.variant === "nov";
   const firstPayment = selected?.schedule[0];
   const steps =
     data.nextSteps?.map((s) => [s.title, s.body]) ??
     (multiple ? STEPS : [SINGLE_FIRST_STEP, ...STEPS.slice(1)]);
 
   return (
-    <div className="oct">
+    <div className={nov ? "oct oct--nov" : "oct"}>
       <header className="oct-header">
         <div className="oct-frame oct-header-inner">
           <img
@@ -216,6 +220,16 @@ export function OctProposal({ data }: { data: OctProposalData }) {
             alt="Akima Studio"
             className="oct-header-logo"
           />
+          {!nov ? (
+            <div className="oct-header-actions">
+              <button type="button" onClick={openEdits} className="oct-btn oct-btn--sm oct-btn--secondary oct-wide-only">
+                Request Edits
+              </button>
+              <button type="button" onClick={openAccept} className="oct-btn oct-btn--sm oct-btn--primary oct-wide-only">
+                Accept Proposal
+              </button>
+            </div>
+          ) : null}
         </div>
       </header>
 
@@ -232,7 +246,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
               </div>
               <h1 className="oct-h1">{data.proposalTitle}</h1>
               {data.intro ? <p className="oct-lead">{data.intro}</p> : null}
-              {packages.length ? (
+              {nov && packages.length ? (
                 <a href={multiple ? "#options" : `#${packages[0].id}`} className="oct-btn oct-btn--primary oct-hero-cta">
                   See pricing
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -649,17 +663,24 @@ export function OctProposal({ data }: { data: OctProposalData }) {
           {data.faqs ? (
             <Section id="faqs" title="FAQs">
               <div className="oct-card">
-                {data.faqs.map((faq) => (
-                  <details key={faq.question} className="oct-faq">
-                    <summary className="oct-faq-q">
-                      {faq.question}
-                      <span className="oct-faq-icon" aria-hidden />
-                    </summary>
-                    <div className="oct-faq-a">
+                {data.faqs.map((faq) =>
+                  nov ? (
+                    <details key={faq.question} className="oct-faq oct-faq--acc">
+                      <summary className="oct-faq-q">
+                        {faq.question}
+                        <span className="oct-faq-icon" aria-hidden />
+                      </summary>
+                      <div className="oct-faq-a">
+                        <Markdown>{faq.answer}</Markdown>
+                      </div>
+                    </details>
+                  ) : (
+                    <div key={faq.question} className="oct-faq">
+                      <span className="oct-faq-q">{faq.question}</span>
                       <Markdown>{faq.answer}</Markdown>
                     </div>
-                  </details>
-                ))}
+                  )
+                )}
               </div>
             </Section>
           ) : null}
@@ -783,7 +804,7 @@ export function OctProposal({ data }: { data: OctProposalData }) {
         </div>
       </footer>
 
-      {!accepted ? (
+      {!accepted && !nov ? (
         <>
           <div className="oct-bar-spacer" />
           <div className="oct-bar">

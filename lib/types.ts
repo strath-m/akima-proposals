@@ -64,7 +64,7 @@ export type ProposalFrontmatter = {
   packages: Package[];
   // Serves /[slug] with this template instead of the live one, and makes every
   // /[slug]/... variant a 404 (see next.config.ts).
-  template?: "oct" | "light";
+  template?: "oct" | "light" | "nov";
   // Used by the /oct template only: hero intro line and Overview rows.
   intro?: string;
   problem?: string;

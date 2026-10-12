@@ -77,7 +77,7 @@ function toPackage(pkg: Package, steps: PaymentStep[]): OctPackage {
   };
 }
 
-export function OctPage({ proposal }: { proposal: Proposal }) {
+export function OctPage({ proposal, variant }: { proposal: Proposal; variant?: "nov" }) {
   const { slug } = proposal;
   const fm = proposal.frontmatter;
   const steps = fm.paymentSchedule ?? DEFAULT_SCHEDULE;
@@ -121,6 +121,7 @@ export function OctPage({ proposal }: { proposal: Proposal }) {
         nextSteps: fm.nextSteps,
         brief: fm.brief,
         stages: fm.stages,
+        variant,
         packages,
         defaultSelected,
         // "Label: note" list items become a row with a right-aligned note.

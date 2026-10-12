@@ -1,7 +1,7 @@
 ---
 client: Mia Jade Studio
 slug: mia-jade-studio
-template: light
+template: nov
 proposalTitle: "Shopify Website\n& Launch Partnership"
 preparedFor: Mia Jade Studio
 preparedBy: Akima Studio

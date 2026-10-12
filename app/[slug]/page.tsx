@@ -16,6 +16,7 @@ import { Section } from "@/components/Section";
 import { StickyNav } from "@/components/StickyNav";
 import { OctPage } from "@/components/oct/OctPage";
 import { OctLightPage } from "@/components/oct-light/OctLightPage";
+import { NovPage } from "@/components/nov/NovPage";
 
 export async function generateStaticParams() {
   return getProposalSlugs().map((slug) => ({ slug }));
@@ -46,6 +47,7 @@ export default async function ProposalPage({
   if (!proposal) notFound();
   if (proposal.frontmatter.template === "oct") return <OctPage proposal={proposal} />;
   if (proposal.frontmatter.template === "light") return <OctLightPage proposal={proposal} />;
+  if (proposal.frontmatter.template === "nov") return <NovPage proposal={proposal} />;
 
   const { frontmatter } = proposal;
   const {
