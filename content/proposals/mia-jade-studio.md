@@ -68,7 +68,6 @@ commitments:
   - No big reveals. You'll see the work at every checkpoint, and nothing moves forward without your sign-off.
   - A round of revisions at every stage.
   - One point of contact on our side, Jake, with a shared channel for quick questions.
-  - No freelancers or outsourcing. The two of us design and build everything.
   - You own the theme, designs and all final files on final payment.
 team:
   - name: Jake Ferguson
