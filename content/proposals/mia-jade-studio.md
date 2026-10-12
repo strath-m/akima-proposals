@@ -104,6 +104,7 @@ packages:
       - Clarity & analytics set-up
     categories:
       - title: Discovery & strategy
+        icon: search
         items:
           - Discovery workshop (2 hours) with Mardi, Mia and Andy, timed around Mia's work schedule
           - Review of Mia's inspiration list (including Rhode) to agree what to borrow and what to avoid
@@ -111,10 +112,12 @@ packages:
           - "Product and category structure: how the range is grouped, named and filtered so it's easy to browse"
           - Sitemap and key shopper journeys, from first visit to checkout
       - title: Coming-soon page (live in week 2)
+        icon: megaphone
         items:
           - Branded coming-soon page on your domain, using your logo, colours and fonts
           - Email sign-up to start building your launch list while the store is designed and built
       - title: Design
+        icon: layout
         items:
           - Mobile-first design, since most shoppers will browse on their phones
           - Interactive prototype with check-ins along the way, so the look, feel and flow are agreed before build
@@ -122,6 +125,7 @@ packages:
           - "Product page built for confidence: clear sizing, size guide, photo and video gallery, delivery and returns information"
           - Placeholder images and video slots based on your shot list, so design doesn't wait on the photo shoot
       - title: Shopify build
+        icon: bag
         items:
           - Custom-coded Shopify theme, built on Shopify's Horizon foundation and shaped around your brand so it doesn't look like a template
           - Colour and size swatches on product pages, with images that change to match the selected colour, using our workaround so you don't need a higher Shopify plan
@@ -129,6 +133,7 @@ packages:
           - "Basic SEO set-up: page titles, descriptions, image alt text and clean URLs"
           - Theme connected to the products, collections and images your team adds in Shopify
       - title: Launch & handover
+        icon: rocket
         items:
           - Microsoft Clarity and Google Analytics installed, so we can see how shoppers use the site from day one
           - Final QA across phones, tablets and desktop
@@ -158,9 +163,11 @@ packages:
       - Priority support for anything that breaks
     categories:
       - title: Phase 1 · Launch
+        icon: rocket
         items:
           - "Everything in Option 01: workshop, reverse brief, coming-soon page, design, custom Shopify build, analytics and handover"
       - title: Phase 2 · Your monthly partnership
+        icon: calendar
         items:
           - Up to 15 hours of design and development each month, prioritised with you
           - Fortnightly check-in to review what's working and agree what's next
@@ -169,6 +176,7 @@ packages:
           - Shopify app and tech advice, so you only pay for what you need
           - Priority support for anything that breaks
       - title: Phase 2 · What we'll build
+        icon: growth
         items:
           - Product customisation, variations and bundles, scoped and built in stages
           - Richer lifestyle and video storytelling as new shoots come in

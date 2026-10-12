@@ -22,6 +22,9 @@ export type CategoryItem =
 export type Category = {
   title: string;
   items?: CategoryItem[];
+  // Used by the /oct template only: a small icon tile beside the title.
+  // One of the names in CATEGORY_ICONS (components/oct/OctProposal.tsx).
+  icon?: string;
 };
 
 export type Package = {

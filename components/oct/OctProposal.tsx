@@ -22,7 +22,7 @@ export type OctPackage = {
   bestFor?: string;
   recommended: boolean;
   highlights: string[];
-  categories: { title: string; items: CategoryItem[] }[];
+  categories: { title: string; items: CategoryItem[]; icon?: string }[];
   schedule: { label: string; note?: string; percent: number; amount: string }[];
 };
 
@@ -68,6 +68,58 @@ const STEPS = [
   ["Sign agreement", "Finalise terms so the work can be booked in."],
   ["Begin discovery", "Move into direction, strategy, and experience mapping."],
 ];
+
+// Line icons (Lucide, 24px grid) for "What's included" card titles.
+const CATEGORY_ICONS: Record<string, ReactNode> = {
+  search: (
+    <>
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </>
+  ),
+  megaphone: (
+    <>
+      <path d="m3 11 18-5v12L3 14v-3z" />
+      <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+    </>
+  ),
+  layout: (
+    <>
+      <rect width="18" height="7" x="3" y="3" rx="1" />
+      <rect width="9" height="7" x="3" y="14" rx="1" />
+      <rect width="5" height="7" x="16" y="14" rx="1" />
+    </>
+  ),
+  bag: (
+    <>
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+      <path d="M3 6h18" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
+    </>
+  ),
+  rocket: (
+    <>
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M16 2v4" />
+      <path d="M8 2v4" />
+      <path d="M3 10h18" />
+    </>
+  ),
+  growth: (
+    <>
+      <path d="M22 7 13.5 15.5 8.5 10.5 2 17" />
+      <path d="M16 7h6v6" />
+    </>
+  ),
+};
 
 function Markdown({ children }: { children: string }) {
   return (
@@ -420,7 +472,18 @@ export function OctProposal({ data }: { data: OctProposalData }) {
                   <div className="oct-grid oct-grid--250">
                     {p.categories.map((cat) => (
                       <div key={cat.title} className="oct-card oct-cat">
-                        <span className="oct-cat-title">{cat.title}</span>
+                        {cat.icon && CATEGORY_ICONS[cat.icon] ? (
+                          <div className="oct-cat-head">
+                            <span className="oct-cat-icon" aria-hidden>
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                {CATEGORY_ICONS[cat.icon]}
+                              </svg>
+                            </span>
+                            <span className="oct-cat-title">{cat.title}</span>
+                          </div>
+                        ) : (
+                          <span className="oct-cat-title">{cat.title}</span>
+                        )}
                         <ul className="oct-cat-list">
                           {cat.items.map((item, i) => (
                             <li key={i} className="oct-cat-item">

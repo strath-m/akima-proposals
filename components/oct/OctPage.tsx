@@ -48,7 +48,7 @@ function scheduleFor(pkg: Package, steps: PaymentStep[]) {
 function toPackage(pkg: Package, steps: PaymentStep[]): OctPackage {
   const categories = (pkg.categories ?? [])
     .filter((c) => (c.items ?? []).length > 0)
-    .map((c) => ({ title: c.title, items: c.items ?? [] }));
+    .map((c): OctPackage["categories"][number] => ({ title: c.title, items: c.items ?? [], icon: c.icon }));
   if (pkg.deliverables?.length) {
     categories.push({ title: "Deliverables", items: pkg.deliverables });
   }

@@ -1070,6 +1070,25 @@ body:has(.oct) {
   color: var(--oct-text-3);
 }
 
+/* Optional icon tile beside a card title (`icon` on a category). */
+.oct-cat-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.oct-cat-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--oct-accent-bg);
+  color: var(--oct-accent-fg);
+}
+
 .oct-cat-list {
   margin: 0;
   padding: 0;
