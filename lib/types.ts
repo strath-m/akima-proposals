@@ -66,8 +66,9 @@ export type ProposalFrontmatter = {
   cta?: CtaConfig;
   packages: Package[];
   // Serves /[slug] with this template instead of the live one, and makes every
-  // /[slug]/... variant a 404 (see next.config.ts).
-  template?: "oct" | "light" | "nov";
+  // /[slug]/... variant a 404 (see next.config.ts). Names are registered in
+  // components/templates.ts.
+  template?: string;
   // Used by the /oct template only: hero intro line and Overview rows.
   intro?: string;
   problem?: string;

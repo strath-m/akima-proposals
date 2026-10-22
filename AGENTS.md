@@ -1,5 +1,16 @@
 # AGENTS.md
 
+## Proposal rules (read first, these override everything below)
+
+This repo serves live client proposals at proposals.akima.studio. **Every push to `main` deploys live.**
+
+1. **Never change a locked file.** `locked.json` lists them: the `nov`, `oct` and `oct-light` templates, `lib/`, the router, global styles and every existing proposal in `content/proposals/`. Mia Jade (`content/proposals/mia-jade-studio.md`, `template: nov`) is the reference proposal and must never change. The build fails if a locked file changes, so the change never reaches the live site.
+2. **Never run `node scripts/check-locked.mjs --update`** or edit `locked.json` unless Strath has approved that exact change.
+3. **New layout = new template.** Copy what you need (e.g. `components/nov/NovPage.tsx` plus the `components/oct/` files it uses) into a new folder `components/<name>/`, change the copy, and register it with one line in `components/templates.ts`. Don't import from the locked template folders if you plan to change what you import; copy it instead.
+4. **New proposal = new file** in `content/proposals/<slug>.md` with `template: <name>`. Content can live in the frontmatter or directly in the template's components, whichever is faster.
+5. Before pushing: `npm run build` must pass. Stage only your own files (`git add components/<name> components/templates.ts content/proposals/<slug>.md`), never `git add .`.
+6. The GitHub repo is public. No contracts, logins or internal client notes in any file.
+
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.

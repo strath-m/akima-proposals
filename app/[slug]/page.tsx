@@ -14,9 +14,7 @@ import { PackageDetail } from "@/components/PackageDetail";
 import { ProposalHero } from "@/components/ProposalHero";
 import { Section } from "@/components/Section";
 import { StickyNav } from "@/components/StickyNav";
-import { OctPage } from "@/components/oct/OctPage";
-import { OctLightPage } from "@/components/oct-light/OctLightPage";
-import { NovPage } from "@/components/nov/NovPage";
+import { templates } from "@/components/templates";
 
 export async function generateStaticParams() {
   return getProposalSlugs().map((slug) => ({ slug }));
@@ -45,9 +43,10 @@ export default async function ProposalPage({
   const { slug } = await params;
   const proposal = getProposalBySlug(slug);
   if (!proposal) notFound();
-  if (proposal.frontmatter.template === "oct") return <OctPage proposal={proposal} />;
-  if (proposal.frontmatter.template === "light") return <OctLightPage proposal={proposal} />;
-  if (proposal.frontmatter.template === "nov") return <NovPage proposal={proposal} />;
+  const Template = proposal.frontmatter.template
+    ? templates[proposal.frontmatter.template]
+    : undefined;
+  if (Template) return <Template proposal={proposal} />;
 
   const { frontmatter } = proposal;
   const {
