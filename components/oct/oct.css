@@ -543,6 +543,35 @@ body:has(.oct) {
   text-underline-offset: 3px;
 }
 
+/* Markdown tables (e.g. a comparison inside an FAQ answer) */
+.oct-prose table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.oct-prose th,
+.oct-prose td {
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--oct-line);
+  text-align: left;
+  vertical-align: top;
+  min-width: 140px;
+}
+
+.oct-prose th {
+  color: var(--oct-text);
+  font-weight: 600;
+}
+
+.oct-prose td:first-child {
+  color: var(--oct-text);
+  font-weight: 500;
+}
+
 /* Hero */
 
 .oct-hero {
