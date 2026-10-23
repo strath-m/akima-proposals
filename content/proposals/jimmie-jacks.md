@@ -5,13 +5,13 @@ template: nov
 proposalTitle: "Website Rebuild\n& SEO-Safe Migration"
 preparedFor: Jimmie Jack · Jimmie Jack's Alaska Fishing Lodges
 preparedBy: Akima Studio
-date: 22 October 2026
-validUntil: 21 November 2026
+date: 23 October 2026
+validUntil: 22 November 2026
 recommendedOption: website-rebuild
 intro: A simpler, faster, mobile-first website that keeps your Google rankings and your leads flowing, live before peak season.
 brief:
   label: The brief
-  headline: "A website that brings in leads but no longer reflects the lodges.\nRebuilt without putting those leads at risk."
+  headline: "30 years of great fishing, and a website ready to catch up.\nRebuilt without risking a single lead."
   text: jimmiejackfishing.com brings in the leads your sales team runs on, but it looks dated, carries clutter visitors don't need, and pushes a pop-up form at people within seconds. Most enquiries come from mobile. You need a fresh, simpler site that sells your two lodges clearly, keeps every Google ranking you've earned since 1995, and lets your team make everyday updates without paying someone each time.
   goalsLabel: Project goals
   goals:
@@ -178,7 +178,7 @@ packages:
 - Prices are in USD
 - 50% to start and 50% on launch
 - Shop add-ons follow the same 50/50 terms
-- Proposal valid until 21 November 2026. To launch by mid-January, we'd need to confirm by Friday 13 November so the workshop can run in late November
+- Proposal valid until 22 November 2026. To launch by mid-January, we'd need to confirm by Friday 13 November so the workshop can run in late November
 - Timelines depend on feedback within 5 working days, access to your accounts in the first week, and asset supply
 - The quarterly check-in is billed each quarter in advance and can be cancelled any time
 - Work outside scope is billed at USD $100/hour or re-scoped and approved before it starts
